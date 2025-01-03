@@ -1,10 +1,15 @@
 M=1024, N=1024, K=1024
+
 ==PROF== Connected to process 828 (/tmp/tmplm3nr6as/fc91237c-6a5d-4956-8db7-fef5e52fd7a3/cuda_exec.out)
+
 ==PROF== Profiling "sgemm" - 0: 0%....50%....100% - 8 passes
-compute pass
+
 ==PROF== Disconnected from process 828
+
 [828] cuda_exec.out@127.0.0.1
+
   sgemm(int, int, int, float, float, const float *, const float *, float *) (32, 32, 1)x(32, 32, 1), Context 1, Stream 7, Device 0, CC 7.5
+  
     Section: GPU Speed Of Light Throughput
     ----------------------- ------------- -------------
     Metric Name               Metric Unit  Metric Value
