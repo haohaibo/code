@@ -33,15 +33,7 @@ __global__ void sgemm(int M, int K, int N, float alpha, float beta, const float*
 
 int main()
 {
-
-    cudaEvent_t start, end;
-    cudaEventCreate(&start);
-    cudaEventCreate(&end);
-
-    cudaEvent_t start_cublas, end_cublas;
-    cudaEventCreate(&start_cublas);
-    cudaEventCreate(&end_cublas);
-for(int i = 256; i <= 6400; i += 256)
+for(int i = 1024; i <= 2048; i += 1024)
 {
     int M = i;
     int N = i;
@@ -126,12 +118,13 @@ for(int i = 256; i <= 6400; i += 256)
 
 /*
 cublasStatus_t cublasSgemm(cublasHandle_t handle,
-                           cublasOperation_t transa, cublasOperation_t transb,
+               cublasOperation_t transa, cublasOperation_t transb,
 			   int m, int n, int k,
 			   const float           *alpha,
 			   const float           *A, int lda,
-		           const float           *B, int ldb,										                                     const float           *beta,
-		           float           *C, int ldc)
+		       const float           *B, int ldb,										       
+               const float           *beta,
+		       float           *C, int ldc)
 */
 
 
@@ -168,6 +161,9 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
     sgemm<<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
 
     float elapsed_time;
+    cudaEvent_t start, end;
+    cudaEventCreate(&start);
+    cudaEventCreate(&end);
 
     int repeat_times = 10;
     cudaEventRecord(start);
@@ -182,11 +178,15 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
     elapsed_time /= 1000.0; // seconds
 
     std::cout << "Average elapsed time: " << elapsed_time/repeat_times << " second(s), performance: "
-	    << (1.0e-9)*2*M*K*N*repeat_times/elapsed_time << " GFLOPS." << std::endl;
+	    << (1.0e-9)*2*M*K*N*repeat_times/elapsed_time << " GFLOPS. Memory bandwith: "
+        << (1.0e-9)*4*(M*K + K*N + M*N)*repeat_times/elapsed_time << " GB/s" << std::endl;
 
     cudaMemcpy(c_host, c_device, sizeof(float)*M*N, cudaMemcpyDeviceToHost);
 
     float elapsed_time_cublas;
+    cudaEvent_t start_cublas, end_cublas;
+    cudaEventCreate(&start_cublas);
+    cudaEventCreate(&end_cublas);
 
     cudaEventRecord(start_cublas);
     for(int i = 0; i < repeat_times; ++i)
@@ -206,7 +206,8 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
     cudaEventElapsedTime(&elapsed_time_cublas, start_cublas, end_cublas);
     elapsed_time_cublas /= 1000.0; // seconds
     std::cout << "Cublas Average elapsed time: " << elapsed_time_cublas << " second(s), performance: "
-	    << (1.0e-9)*2*M*K*N*repeat_times/elapsed_time_cublas << " GFLOPS." << std::endl;
+	    << (1.0e-9)*2*M*K*N*repeat_times/elapsed_time_cublas << " GFLOPS. Memory bandwidth: "
+        << (1.0e-9)*4*(M*K + K*N + M*N)*repeat_times/elapsed_time_cublas << " GB/s" << std::endl;
 
     cudaMemcpy(c_ref_host, c_ref_device, sizeof(float)*M*N, cudaMemcpyDeviceToHost);
  
