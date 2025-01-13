@@ -33,7 +33,7 @@ __global__ void sgemm(int M, int K, int N, float alpha, float beta, const float*
 
 int main()
 {
-for(int i = 1024; i <= 2048; i += 1024)
+for(int i = 1024; i <= 4096; i += 1024)
 {
     int M = i;
     int N = i;
@@ -120,11 +120,11 @@ for(int i = 1024; i <= 2048; i += 1024)
 cublasStatus_t cublasSgemm(cublasHandle_t handle,
                cublasOperation_t transa, cublasOperation_t transb,
 			   int m, int n, int k,
-			   const float           *alpha,
-			   const float           *A, int lda,
-		       const float           *B, int ldb,										       
-               const float           *beta,
-		       float           *C, int ldc)
+			   const float *alpha,
+			   const float *A, int lda,
+		       const float *B, int ldb,										       
+               const float *beta,
+		       float *C, int ldc)
 */
 
 
@@ -171,6 +171,15 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
     {
         sgemm<<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
     }
+
+    cudaError_t err;
+    err = cudaGetLastError();
+    if(err != cudaSuccess)
+    {
+        std::cout << "kernel launch or execute failure" << std::endl;
+        std::cout << cudaGetErrorString(err) << std::endl;
+    }
+
     cudaEventRecord(end);
     cudaEventSynchronize(start);
     cudaEventSynchronize(end);
