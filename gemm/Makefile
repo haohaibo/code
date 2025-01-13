@@ -18,13 +18,17 @@ all: build
 
 build: gemm_naive
 
-EXEC ?= @echo
+BUILD_ENABLED := 1
+
+ifeq ($(BUILD_ENABLED), 0)
+EXEC ?= @echo "[@]"
+endif
 
 gemm_naive.o: gemm_naive.cu
-	$(NVCC) $(GENCODE_FLAGS) -o $@ -c $<
+	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ -c $<
 
 gemm_naive: gemm_naive.o
-	$(NVCC) $(GENCODE_FLAGS) -o $@ $^ $(LIBRARIES)
+	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ $^ $(LIBRARIES)
 
 clean:
 	rm -rfv gemm_naive gemm_naive.o
