@@ -1,4 +1,4 @@
-CUDA_PATH ?= /dev/shm/cuda-11.4
+CUDA_PATH ?= /data/cuda-11.4
 HOST_COMPILER ?= g++
 NVCC          := $(CUDA_PATH)/bin/nvcc -ccbin $(HOST_COMPILER)
 
@@ -16,7 +16,7 @@ endif
 
 all: build
 
-build: gemm_naive
+build: gemm_naive gemm_coalescing
 
 BUILD_ENABLED := 1
 
@@ -30,6 +30,12 @@ gemm_naive.o: gemm_naive.cu
 gemm_naive: gemm_naive.o
 	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ $^ $(LIBRARIES)
 
+gemm_coalescing.o: gemm_coalescing.cu
+	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ -c $<
+
+gemm_coalescing: gemm_coalescing.o
+	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ $^ $(LIBRARIES)	
+
 clean:
-	rm -rfv gemm_naive gemm_naive.o
+	rm -rfv gemm_naive gemm_naive.o gemm_coalescing.o gemm_coalescing
 

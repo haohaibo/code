@@ -13,10 +13,11 @@
  MxN = MxK + KxN
 */
 
+template<const uint BLOCKSIZE>
 __global__ void sgemm(int M, int K, int N, float alpha, float beta, const float* A, const float* B, float* C)
 {
-    int x = blockIdx.x * blockDim.x + threadIdx.x;
-    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    int x = blockIdx.x * BLOCKSIZE + (threadIdx.x / BLOCKSIZE);
+    int y = blockIdx.y * BLOCKSIZE + (threadIdx.x % BLOCKSIZE);
 
     if(x < M && y < N)
     {
@@ -154,11 +155,10 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
     //
     dim3 blocksPerGrid((M+31)/32, (N+31)/32);
     // use 1024 threads per block
-    // threadIdx.x 32, threadIdx.y 32, threadIdx.z 1
     // one thread compute one output element of C
-    dim3 threadsPerBlock(32, 32, 1);
+    dim3 threadsPerBlock(32*32);
     // warm up
-    sgemm<<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
+    sgemm<32><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
 
     float elapsed_time;
     cudaEvent_t start, end;
@@ -169,7 +169,7 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
     cudaEventRecord(start);
     for(int i = 0; i < repeat_times; ++i)
     {
-        sgemm<<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
+        sgemm<32><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
     }
 
     cudaError_t err;
@@ -201,7 +201,7 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
     for(int i = 0; i < repeat_times; ++i)
     {
           cublasSgemm(handle,
-                           CUBLAS_OP_N, CUBLAS_OP_N,
+              CUBLAS_OP_N, CUBLAS_OP_N,
 			   N, M, K,
 			   &alpha,
 			   b_device, N,
