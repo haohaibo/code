@@ -16,7 +16,7 @@ endif
 
 all: build
 
-build: gemm_naive gemm_coalescing
+build: gemm_naive gemm_coalescing gemm_shared_mem
 
 BUILD_ENABLED := 1
 
@@ -34,8 +34,14 @@ gemm_coalescing.o: gemm_coalescing.cu
 	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ -c $<
 
 gemm_coalescing: gemm_coalescing.o
+	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ $^ $(LIBRARIES)
+
+gemm_shared_mem.o: gemm_shared_mem.cu
+	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ -c $<
+
+gemm_shared_mem: gemm_shared_mem.o
 	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ $^ $(LIBRARIES)	
 
 clean:
-	rm -rfv gemm_naive gemm_naive.o gemm_coalescing.o gemm_coalescing
+	rm -rfv gemm_naive gemm_naive.o gemm_coalescing.o gemm_coalescing gemm_shared_mem.o gemm_shared_mem
 
