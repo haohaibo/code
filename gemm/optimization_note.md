@@ -185,8 +185,10 @@ Fig 1. compute a column of 4 results will need to have 11 loads and 1 store.
 
 
 Fig 2. compute a squre of 2*2 results will need to have 9 loads and 1 store.
+
 <img src="https://github.com/haohaibo/code/blob/main/materials/load_a_b_c_square.png" width="500px" />
 
-Fig 3 compute 1 result will need to have 17 loads and 1 store
+Fig 3 compute 1 result will need to have 17 loads and 1 store.
+
 <img src="https://github.com/haohaibo/code/blob/main/materials/load_a_b_c.png" width="500px" />
 Compare Fig 2 and Fig 3. we can find that calculating more results per thread can increase arithmetic intensity
