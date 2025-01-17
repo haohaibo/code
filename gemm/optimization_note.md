@@ -181,7 +181,7 @@ we can share more inputs.
 
 Fig 1. compute a column of 4 results will need to have 11 loads and 1 store.
 
-![image](https://github.com/haohaibo/code/blob/main/materials/load_a_b_c_column.png)
+![image](https://github.com/haohaibo/code/blob/main/materials/load_a_b_column.png)
 
 
 Fig 2. compute a squre of 2*2 results will need to have 9 loads and 1 store.
