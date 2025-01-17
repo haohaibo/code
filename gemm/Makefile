@@ -1,4 +1,4 @@
-CUDA_PATH ?= /data/cuda-11.4
+CUDA_PATH ?= /data/cuda-12.6
 HOST_COMPILER ?= g++
 NVCC          := $(CUDA_PATH)/bin/nvcc -ccbin $(HOST_COMPILER)
 
@@ -7,7 +7,7 @@ LIBRARIES :=
 LIBRARIES += -lcublas
 
 # Gencode arguments
-SMS ?= 35 37 50 52 60 61 70 75 80 86
+SMS ?= 50 52 60 61 70 75 80 86 89
 
 ifeq ($(GENCODE_FLAGS),)
 # generate SASS code for each SM architecture listed in $(SMS)
@@ -16,7 +16,7 @@ endif
 
 all: build
 
-build: gemm_naive gemm_coalescing gemm_shared_mem
+build: gemm_naive gemm_coalescing gemm_shared_mem gemm_shared_mem_1d_tiling
 
 BUILD_ENABLED := 1
 
@@ -42,6 +42,13 @@ gemm_shared_mem.o: gemm_shared_mem.cu
 gemm_shared_mem: gemm_shared_mem.o
 	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ $^ $(LIBRARIES)	
 
+gemm_shared_mem_1d_tiling.o: gemm_shared_mem_1d_tiling.cu
+	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ -c $<
+
+gemm_shared_mem_1d_tiling: gemm_shared_mem_1d_tiling.o
+	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ $^ $(LIBRARIES)	
+
 clean:
-	rm -rfv gemm_naive gemm_naive.o gemm_coalescing.o gemm_coalescing gemm_shared_mem.o gemm_shared_mem
+	rm -rfv gemm_naive gemm_naive.o gemm_coalescing.o gemm_coalescing gemm_shared_mem.o gemm_shared_mem \
+		gemm_shared_mem_1d_tiling.o gemm_shared_mem_1d_tiling
 
