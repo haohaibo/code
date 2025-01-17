@@ -179,15 +179,14 @@ So this kernel is limited by the number of threads per block and the number of r
 It is more efficient to calculate a square of results per thread than a column of results because
 we can share more inputs.
 
-Fig 1. shows to compute a column of 4 results will need to have 11 loads and 1 store.
+Fig 1. compute a column of 4 results will need to have 11 loads and 1 store.
 
-![image]()
+![image](https://github.com/haohaibo/code/blob/main/materials/load_a_b_c_column.png)
 
 
-Fig 2. show to compute a squre of 2*2 results will need to have 9 loads and 1 store.
-![image]()
- 
+Fig 2. compute a squre of 2*2 results will need to have 9 loads and 1 store.
+![image](https://github.com/haohaibo/code/blob/main/materials/load_a_b_c_square.png)
 
-Fig 3
-![image]()
+Fig 3 compute 1 result will need to have 17 loads and 1 store
+![image](https://github.com/haohaibo/code/blob/main/materials/load_a_b_c.png)
 Compare Fig 2 and Fig 3. we can know that calculating more results per thread can increase arithmetic intensity
