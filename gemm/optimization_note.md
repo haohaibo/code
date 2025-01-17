@@ -181,12 +181,12 @@ we can share more inputs.
 
 Fig 1. compute a column of 4 results will need to have 11 loads and 1 store.
 
-![image](https://github.com/haohaibo/code/blob/main/materials/load_a_b_column.png)
+![image](https://github.com/haohaibo/code/blob/main/materials/load_a_b_column.png#pic_center =200x)
 
 
 Fig 2. compute a squre of 2*2 results will need to have 9 loads and 1 store.
-![image](https://github.com/haohaibo/code/blob/main/materials/load_a_b_c_square.png)
+![image](https://github.com/haohaibo/code/blob/main/materials/load_a_b_c_square.png#pic_center =200x)
 
 Fig 3 compute 1 result will need to have 17 loads and 1 store
-![image](https://github.com/haohaibo/code/blob/main/materials/load_a_b_c.png)
-Compare Fig 2 and Fig 3. we can know that calculating more results per thread can increase arithmetic intensity
+![image](https://github.com/haohaibo/code/blob/main/materials/load_a_b_c.png#pic_center =200x)
+Compare Fig 2 and Fig 3. we can find that calculating more results per thread can increase arithmetic intensity
