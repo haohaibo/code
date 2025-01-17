@@ -176,6 +176,8 @@ So this kernel is limited by the number of threads per block and the number of r
 66 % occupancy is not too bad, so this doesn't explain why our kernel runs so slow.
 
 
+### Arithmetic Intensity
+
 It is more efficient to calculate a square of results per thread than a column of results because
 we can share more inputs.
 
