@@ -20,6 +20,8 @@
  MxN = MxK + KxN
 */
 
+// Change SMEM As be continuous acrossing BM dimension has no perf gain compared to gemm_shared_mem_1d_tiling.cu
+
 template<const uint BM, const uint BK, const uint BN, const uint TM>
 __global__ void sgemm(int M, int K, int N, float alpha, float beta, const float* A, const float* B, float* C)
 {
@@ -45,7 +47,8 @@ __global__ void sgemm(int M, int K, int N, float alpha, float beta, const float*
     }
     for(int block = 0; block < K/BK; ++block)
     {
-        As[xa * BK + ya] = A[xa * K + ya];
+        //As[xa * BK + ya] = A[xa * K + ya];
+        As[ya * BM + xa] = A[xa * K + ya];
         Bs[xb * BN + yb] = B[xb * N + yb];
 
         // sync to make sure shared memory are fully loaded by all threads in a thread block
@@ -59,7 +62,7 @@ __global__ void sgemm(int M, int K, int N, float alpha, float beta, const float*
             float b = Bs[yb + k * BN];
             for(int t = 0; t < TM; ++t)
             {
-                c[t] += As[(xb * TM + t) * BK + k] * b;
+                c[t] += As[(xb * TM + t) + k * BM] * b;
             }
         }
         // sync to make sure all threads in a thread block have completed the partial sum

@@ -16,7 +16,7 @@ endif
 
 all: build
 
-build: gemm_naive gemm_coalescing gemm_shared_mem gemm_shared_mem_1d_tiling
+build: gemm_naive gemm_coalescing gemm_shared_mem gemm_shared_mem_1d_tiling gemm_shared_mem_1d_tiling_As_conti
 
 BUILD_ENABLED := 1
 
@@ -46,9 +46,16 @@ gemm_shared_mem_1d_tiling.o: gemm_shared_mem_1d_tiling.cu
 	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ -c $<
 
 gemm_shared_mem_1d_tiling: gemm_shared_mem_1d_tiling.o
+	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ $^ $(LIBRARIES)
+
+gemm_shared_mem_1d_tiling_As_conti.o: gemm_shared_mem_1d_tiling_As_conti.cu
+	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ -c $<
+
+gemm_shared_mem_1d_tiling_As_conti: gemm_shared_mem_1d_tiling_As_conti.o
 	$(EXEC) $(NVCC) $(GENCODE_FLAGS) -o $@ $^ $(LIBRARIES)	
 
 clean:
 	rm -rfv gemm_naive gemm_naive.o gemm_coalescing.o gemm_coalescing gemm_shared_mem.o gemm_shared_mem \
-		gemm_shared_mem_1d_tiling.o gemm_shared_mem_1d_tiling
+		gemm_shared_mem_1d_tiling.o gemm_shared_mem_1d_tiling gemm_shared_mem_1d_tiling_As_conti \
+		gemm_shared_mem_1d_tiling_As_conti.o
 

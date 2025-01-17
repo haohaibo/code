@@ -174,4 +174,20 @@ So allcate (1280 Register per Warp) * (32 Warps) = 40K Registers per Block.
 So this kernel is limited by the number of threads per block and the number of registers per block. We cannot load more than 1 blocks per SM, giving us the final occupancy of 32 active warps / 48 max active warps = 66 %
 
 66 % occupancy is not too bad, so this doesn't explain why our kernel runs so slow.
+
+
+It is more efficient to calculate a square of results per thread than a column of results because
+we can share more inputs.
+
+Fig 1. shows to compute a column of 4 results will need to have 11 loads and 1 store.
+
+![image]()
+
+
+Fig 2. show to compute a squre of 2*2 results will need to have 9 loads and 1 store.
+![image]()
  
+
+Fig 3
+![image]()
+Compare Fig 2 and Fig 3. we can know that calculating more results per thread can increase arithmetic intensity
