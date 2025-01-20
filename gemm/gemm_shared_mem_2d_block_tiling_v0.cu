@@ -5,36 +5,120 @@
 #include <cstdlib>
 #include <cmath>
 #include <cublas_v2.h>
+#include <stdio.h>
 
 #define DEBUG 0
+
+// default set to 10
+#define REPEAT_TIMES 10
+
+// default set to 1
+#define WARM_UP 1
 
 /*
  compute C = alpha*A*B + beta*C
  MxN = MxK + KxN
 */
 
-template<const uint BLOCKSIZE>
+template<const uint BM, const uint BK, const uint BN, const uint TM, const uint TN>
 __global__ void sgemm(int M, int K, int N, float alpha, float beta, const float* A, const float* B, float* C)
 {
-    int x = blockIdx.x * BLOCKSIZE + (threadIdx.x / BLOCKSIZE);
-    int y = blockIdx.y * BLOCKSIZE + (threadIdx.x % BLOCKSIZE);
 
-    if(x < M && y < N)
+    A += blockIdx.x * BM * K;
+    B += blockIdx.y * BN;
+    C += blockIdx.x * BM * N + blockIdx.y * BN;
+
+    // one thread block compute thread block size of C
+    __shared__ float As[BM * BK];
+    __shared__ float Bs[BK * BN];
+
+    //int xa = threadIdx.x / (BK/TN);
+    //int ya = threadIdx.x % (BK/TN);
+
+    int elementsLoadPerThread = (BK * TM * TN) / BM;
+
+    int xb = threadIdx.x / (BN/TN);
+    int yb = threadIdx.x % (BN/TN);
+
+
+    int colA = threadIdx.x % BK;
+    int rowA = threadIdx.x / BK;
+
+    int colB = threadIdx.x % BN;
+    int rowB = threadIdx.x / BN;
+
+    float c[TM*TN] = {0.0};
+
+    float regAs[TM] = {0.0};
+    float regBs[TN] = {0.0};
+    for(int block = 0; block < K/BK; ++block)
     {
-      // compute
-      float c = 0;
-      for(int k = 0; k < K; ++k)
-      {
-          c += A[x*K + k] * B[N*k + y];
-      }
-      // write C
-      C[x*N + y] = alpha*c + beta*C[x*N + y];
+    #if 0
+        for(int t = 0; t < TM; ++t)
+        {
+            //As[xa * BK + ya * TN + t] = A[xa * K + yb * TN + t];
+
+            As[(xb * TM + t) * BK + yb] = A[(xb * TM + t) * K + yb];
+        }
+    #endif
+        for(int t = 0; t < elementsLoadPerThread; ++t)
+        {
+            As[((rowA * elementsLoadPerThread + t) * BK) + colA] = A[((rowA * elementsLoadPerThread + t) * K) + colA];
+        }
+        for(int t = 0; t < elementsLoadPerThread; ++t)
+        {
+            //Bs[xb * BN + yb * TN + t] = B[xb * N + yb * TN + t];
+
+            //Bs[(t * BN) + threadIdx.x] = B[(t * N) + threadIdx.x];
+
+            Bs[((rowB * elementsLoadPerThread + t) * BN) + colB] = B[((rowB * elementsLoadPerThread + t) * N) + colB];
+        }
+
+        // sync to make sure shared memory are fully loaded by all threads in a thread block
+        __syncthreads();
+
+        A += BK;
+        B += BK * N;
+        // inner block loop
+        for(int k = 0; k < BK; ++k)
+        {
+            for(int i = 0; i < TM; ++i)
+            {
+                regAs[i] = As[(xb * TM + i) * BK + k];
+            }
+
+            for(int j = 0; j < TN; ++j)
+            {
+                regBs[j] = Bs[(yb * TN + j) + k * BN];
+            }
+
+            for(int tm = 0; tm < TM; ++tm)
+            {
+                for(int tn = 0; tn < TN; ++tn)
+                {
+                    //c[tm * TN + tn] += As[(xb * TM + tm) * BK + k] * Bs[(yb * TN + tn) + k * BN];
+                    c[tm * TN + tn] += regAs[tm] * regBs[tn];
+                }
+            }
+        }
+        // sync to make sure all threads in a thread block have completed the partial sum
+        // shared memory are all consumed before the next load
+        __syncthreads();
     }
+
+    for(int tm = 0; tm < TM; ++tm)
+    {
+        for(int tn = 0; tn < TN; ++tn)
+        {
+            C[(xb * TM + tm) * N + yb * TN + tn] = alpha*c[tm * TN + tn] + beta*C[(xb * TM + tm) * N + yb * TN + tn];
+        }
+    }
+
 }
 
 int main()
 {
-for(int i = 1024; i <= 2048; i += 1024)
+for(int i = 1024; i <= 4096; i += 1024)
 {
     int M = i;
     int N = i;
@@ -55,7 +139,7 @@ for(int i = 1024; i <= 2048; i += 1024)
     {
         for(int j = 0; j < K; ++j)
         {
-            a_host[i*M + j] = static_cast<float>(rand() % 100);
+            a_host[i*M + j] = static_cast<float>(rand() % 5);
           #if DEBUG
             std::cout << a_host[i*M + j] << " ";
           #endif
@@ -72,7 +156,7 @@ for(int i = 1024; i <= 2048; i += 1024)
     {
         for(int j = 0; j < N; ++j)
         {
-            b_host[i*K + j] = static_cast<float>(rand() % 100);
+            b_host[i*K + j] = static_cast<float>(rand() % 5);
           #if DEBUG
             std::cout << b_host[i*K + j] << " ";
           #endif
@@ -82,7 +166,7 @@ for(int i = 1024; i <= 2048; i += 1024)
         #endif
     }
 #if DEBUG
-    std::cout << "c_ref" << std::endl;
+    std::cout << "c_ref_host" << std::endl;
 #endif
 #if DEBUG
     for(int i = 0; i < M; ++i)
@@ -138,12 +222,13 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
     {
 	    std::cout << "CUBLAS initialization failure" << std::endl;
     }
+#if WARM_UP
     stat = cublasSgemm(handle,
                            CUBLAS_OP_N, CUBLAS_OP_N,
 			   N, M, K,
 			   &alpha,
 			   b_device, N,
-		       a_device, K,
+		           a_device, K,
 			   &beta,
 			   c_ref_device, N);
 
@@ -151,26 +236,35 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
     {
 	    std::cout << "CUBLAS Sgemm execution failure" << std::endl;
     }
+#endif
 
-    //
-    dim3 blocksPerGrid((M+31)/32, (N+31)/32);
-    // use 1024 threads per block
-    // one thread compute one output element of C
-    dim3 threadsPerBlock(32*32);
-    // warm up
-    sgemm<32><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
+    // 1 thread compute 8x8 output elements acrossing M dimension
+    const uint TM = 8, TN = 8;
+    const uint BK = 8;
 
     float elapsed_time;
     cudaEvent_t start, end;
     cudaEventCreate(&start);
     cudaEventCreate(&end);
 
-    int repeat_times = 10;
+    const uint BM = 64, BN = 64;
+    //
+    dim3 blocksPerGrid((M+BM-1)/BM, (N+BN-1)/BN);
+    // one thread compute 8x8 output element of C
+    dim3 threadsPerBlock((BM*BN)/(TM*TN));
+
+#if WARM_UP
+    // warm up
+    sgemm<BM, BK, BN, TM, TN><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
+#endif
+
     cudaEventRecord(start);
-    for(int i = 0; i < repeat_times; ++i)
+    for(int i = 0; i < REPEAT_TIMES; ++i)
     {
-        sgemm<32><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
+        sgemm<BM, BK, BN, TM, TN><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
     }
+    cudaEventRecord(end);
+
 
     cudaError_t err;
     err = cudaGetLastError();
@@ -180,15 +274,14 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
         std::cout << cudaGetErrorString(err) << std::endl;
     }
 
-    cudaEventRecord(end);
     cudaEventSynchronize(start);
     cudaEventSynchronize(end);
     cudaEventElapsedTime(&elapsed_time, start, end);
     elapsed_time /= 1000.0; // seconds
 
-    std::cout << "Average elapsed time: " << elapsed_time/repeat_times << " second(s), performance: "
-	    << (1.0e-9)*2*M*K*N*repeat_times/elapsed_time << " GFLOPS. Memory bandwith: "
-        << (1.0e-9)*4*(M*K + K*N + M*N)*repeat_times/elapsed_time << " GB/s" << std::endl;
+    std::cout << "Average elapsed time: " << elapsed_time/REPEAT_TIMES << " second(s), performance: "
+	    << (1.0e-9)*2*M*K*N*REPEAT_TIMES/elapsed_time << " GFLOPS. Memory bandwith: "
+        << (1.0e-9)*4*(M*K + K*N + M*N)*REPEAT_TIMES/elapsed_time << " GB/s" << std::endl;
 
     cudaMemcpy(c_host, c_device, sizeof(float)*M*N, cudaMemcpyDeviceToHost);
 
@@ -198,10 +291,10 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
     cudaEventCreate(&end_cublas);
 
     cudaEventRecord(start_cublas);
-    for(int i = 0; i < repeat_times; ++i)
+    for(int i = 0; i < REPEAT_TIMES; ++i)
     {
-          cublasSgemm(handle,
-              CUBLAS_OP_N, CUBLAS_OP_N,
+    stat = cublasSgemm(handle,
+               CUBLAS_OP_N, CUBLAS_OP_N,
 			   N, M, K,
 			   &alpha,
 			   b_device, N,
@@ -209,17 +302,37 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
 			   &beta,
 			   c_ref_device, N);
     }
+
+    if(stat != CUBLAS_STATUS_SUCCESS)
+    {
+	    std::cout << "CUBLAS Sgemm execution failure" << std::endl;
+    }
     cudaEventRecord(end_cublas);
     cudaEventSynchronize(start_cublas);
     cudaEventSynchronize(end_cublas);
     cudaEventElapsedTime(&elapsed_time_cublas, start_cublas, end_cublas);
     elapsed_time_cublas /= 1000.0; // seconds
     std::cout << "Cublas Average elapsed time: " << elapsed_time_cublas << " second(s), performance: "
-	    << (1.0e-9)*2*M*K*N*repeat_times/elapsed_time_cublas << " GFLOPS. Memory bandwidth: "
-        << (1.0e-9)*4*(M*K + K*N + M*N)*repeat_times/elapsed_time_cublas << " GB/s" << std::endl;
+	    << (1.0e-9)*2*M*K*N*REPEAT_TIMES/elapsed_time_cublas << " GFLOPS. Memory bandwidth: "
+        << (1.0e-9)*4*(M*K + K*N + M*N)*REPEAT_TIMES/elapsed_time_cublas << " GB/s" << std::endl;
 
     cudaMemcpy(c_ref_host, c_ref_device, sizeof(float)*M*N, cudaMemcpyDeviceToHost);
  
+
+#if DEBUG
+    std::cout << "c_host" << std::endl;
+#endif
+#if DEBUG
+    for(int i = 0; i < M; ++i)
+    {
+        for(int j = 0; j < N; ++j)
+        {
+            std::cout << c_host[i*M + j] << " ";
+        }
+        std::cout << std::endl;
+    }
+#endif
+
 
     // verify
     bool flag = true;

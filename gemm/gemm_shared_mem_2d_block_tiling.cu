@@ -20,7 +20,7 @@
  MxN = MxK + KxN
 */
 
-template<const uint BM, const uint BK, const uint BN, const uint TM>
+template<const uint BM, const uint BK, const uint BN, const uint TM, const uint TN>
 __global__ void sgemm(int M, int K, int N, float alpha, float beta, const float* A, const float* B, float* C)
 {
 
@@ -32,17 +32,47 @@ __global__ void sgemm(int M, int K, int N, float alpha, float beta, const float*
     __shared__ float As[BM * BK];
     __shared__ float Bs[BK * BN];
 
-    int xa = threadIdx.x / BK;
-    int ya = threadIdx.x % BK;
+    //int xa = threadIdx.x / (BK/TN);
+    //int ya = threadIdx.x % (BK/TN);
 
-    int xb = threadIdx.x / BN;
-    int yb = threadIdx.x % BN;
+    int elementsLoadPerThread = (BK * TM * TN) / BM;
 
-    float c[TM] = {0.0};
+    int xb = threadIdx.x / (BN/TN);
+    int yb = threadIdx.x % (BN/TN);
+
+
+    int colA = threadIdx.x % BK;
+    int rowA = threadIdx.x / BK;
+
+    int colB = threadIdx.x % BN;
+    int rowB = threadIdx.x / BN;
+
+    float c[TM*TN] = {0.0};
+
+    float regAs[TM] = {0.0};
+    float regBs[TN] = {0.0};
     for(int block = 0; block < K/BK; ++block)
     {
-        As[xa * BK + ya] = A[xa * K + ya];
-        Bs[xb * BN + yb] = B[xb * N + yb];
+    #if 0
+        for(int t = 0; t < TM; ++t)
+        {
+            //As[xa * BK + ya * TN + t] = A[xa * K + yb * TN + t];
+
+            As[(xb * TM + t) * BK + yb] = A[(xb * TM + t) * K + yb];
+        }
+    #endif
+        for(int t = 0; t < elementsLoadPerThread; ++t)
+        {
+            As[((rowA * elementsLoadPerThread + t) * BK) + colA] = A[((rowA * elementsLoadPerThread + t) * K) + colA];
+        }
+        for(int t = 0; t < elementsLoadPerThread; ++t)
+        {
+            //Bs[xb * BN + yb * TN + t] = B[xb * N + yb * TN + t];
+
+            //Bs[(t * BN) + threadIdx.x] = B[(t * N) + threadIdx.x];
+
+            Bs[((rowB * elementsLoadPerThread + t) * BN) + colB] = B[((rowB * elementsLoadPerThread + t) * N) + colB];
+        }
 
         // sync to make sure shared memory are fully loaded by all threads in a thread block
         __syncthreads();
@@ -52,10 +82,23 @@ __global__ void sgemm(int M, int K, int N, float alpha, float beta, const float*
         // inner block loop
         for(int k = 0; k < BK; ++k)
         {
-            float b = Bs[yb + k * BN];
-            for(int t = 0; t < TM; ++t)
+            for(int i = 0; i < TM; ++i)
             {
-                c[t] += As[(xb * TM + t) * BK + k] * b;
+                regAs[i] = As[(xb * TM + i) * BK + k];
+            }
+
+            for(int j = 0; j < TN; ++j)
+            {
+                regBs[j] = Bs[(yb * TN + j) + k * BN];
+            }
+
+            for(int tm = 0; tm < TM; ++tm)
+            {
+                for(int tn = 0; tn < TN; ++tn)
+                {
+                    //c[tm * TN + tn] += As[(xb * TM + tm) * BK + k] * Bs[(yb * TN + tn) + k * BN];
+                    c[tm * TN + tn] += regAs[tm] * regBs[tn];
+                }
             }
         }
         // sync to make sure all threads in a thread block have completed the partial sum
@@ -63,9 +106,12 @@ __global__ void sgemm(int M, int K, int N, float alpha, float beta, const float*
         __syncthreads();
     }
 
-    for(int t = 0; t < TM; ++t)
+    for(int tm = 0; tm < TM; ++tm)
     {
-        C[(xb * TM + t) * N + yb] = alpha*c[t] + beta*C[(xb * TM + t) * N + yb];
+        for(int tn = 0; tn < TN; ++tn)
+        {
+            C[(xb * TM + tm) * N + yb * TN + tn] = alpha*c[tm * TN + tn] + beta*C[(xb * TM + tm) * N + yb * TN + tn];
+        }
     }
 
 }
@@ -192,29 +238,57 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
     }
 #endif
 
-    const uint BM = 64, BK = 8, BN = 64;
-    // 1 thread compute 8 output elements acrossing M dimension
-    const uint TM = 8;
-    //
-    dim3 blocksPerGrid((M+BM-1)/BM, (N+BN-1)/BN);
-    // one thread compute 8 output element of C
-    dim3 threadsPerBlock((BM*BN)/TM);
-
-#if WARM_UP
-    // warm up
-    sgemm<BM, BK, BN, TM><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
-#endif
+    // 1 thread compute 8x8 output elements acrossing M dimension
+    const uint TM = 8, TN = 8;
+    const uint BK = 8;
 
     float elapsed_time;
     cudaEvent_t start, end;
     cudaEventCreate(&start);
     cudaEventCreate(&end);
 
+    if(M >= 128 && N >= 128)
+    {
+    const uint BM = 128, BN = 128;
+
+    //
+    dim3 blocksPerGrid((M+BM-1)/BM, (N+BN-1)/BN);
+    // one thread compute 8x8 output element of C
+    dim3 threadsPerBlock((BM*BN)/(TM*TN));
+
+#if WARM_UP
+    // warm up
+    sgemm<BM, BK, BN, TM, TN><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
+#endif
+
     cudaEventRecord(start);
     for(int i = 0; i < REPEAT_TIMES; ++i)
     {
-        sgemm<BM, BK, BN, TM><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
+        sgemm<BM, BK, BN, TM, TN><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
     }
+    cudaEventRecord(end);
+
+    }else
+    {
+    const uint BM = 64, BN = 64;
+    //
+    dim3 blocksPerGrid((M+BM-1)/BM, (N+BN-1)/BN);
+    // one thread compute 8x8 output element of C
+    dim3 threadsPerBlock((BM*BN)/(TM*TN));
+
+#if WARM_UP
+    // warm up
+    sgemm<BM, BK, BN, TM, TN><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
+#endif
+
+    cudaEventRecord(start);
+    for(int i = 0; i < REPEAT_TIMES; ++i)
+    {
+        sgemm<BM, BK, BN, TM, TN><<<blocksPerGrid, threadsPerBlock>>>(M, K, N, alpha, beta, a_device, b_device, c_device);
+    }
+    cudaEventRecord(end);
+    }
+
 
     cudaError_t err;
     err = cudaGetLastError();
@@ -224,7 +298,6 @@ cublasStatus_t cublasSgemm(cublasHandle_t handle,
         std::cout << cudaGetErrorString(err) << std::endl;
     }
 
-    cudaEventRecord(end);
     cudaEventSynchronize(start);
     cudaEventSynchronize(end);
     cudaEventElapsedTime(&elapsed_time, start, end);
