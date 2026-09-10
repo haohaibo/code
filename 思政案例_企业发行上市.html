@@ -73,21 +73,10 @@
   .card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;}
   .card h4{margin-top:0;color:var(--red);}
 
-  /* flow steps */
-  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0;}
-  .flow .step{background:#fff;border:1px solid var(--line);border-top:4px solid var(--red);
-    border-radius:8px;padding:12px;text-align:center;}
-  .flow .step .num{display:inline-block;background:var(--red);color:#fff;border-radius:50%;
-    width:26px;height:26px;line-height:26px;font-weight:700;margin-bottom:6px;}
-  .flow .step .name{font-weight:700;color:var(--red-deep);margin-bottom:4px;font-size:15px;}
-  .flow .step .desc{font-size:12.5px;color:var(--ink-2);line-height:1.5;}
-
-  /* design axis */
-  .axis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0;}
-  .axis .a{background:linear-gradient(180deg,#FCEEEF 0%,#fff 100%);
-    border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;}
-  .axis .a .k{color:var(--red);font-weight:700;font-size:15px;}
-  .axis .a .v{font-size:12.5px;color:var(--ink-2);}
+  /* figure caption */
+  .figure{margin:22px 0 8px;padding:14px;background:#FDFBF4;border:1px solid var(--line);border-radius:10px;}
+  .figure svg{display:block;width:100%;height:auto;}
+  .fig-cap{text-align:center;font-weight:700;color:var(--red-deep);margin-top:10px;letter-spacing:1px;font-size:15px;}
 
   /* quote */
   blockquote{border-left:4px solid var(--red);background:#FBF3F4;color:var(--red-deep);
@@ -148,6 +137,148 @@
   <li><strong>破解"金融虚火症"，涵养金融为民初心。</strong> 针对学生把"打新破发""IPO 抑价"仅看作套利机会、把上市与实体经济割裂的偏差，本案例引入科创板"硬科技"定位与"卡脖子"产业链上市支持政策，引导学生理解 <em>资本市场服务实体经济、服务国家战略、服务人民美好生活</em> 的本源使命。</li>
 </ol>
 <p>基于上述靶向痛点，本案例彻底重构传统"念条文—做题目"的教学模式，通过"董事会沉浸推演""IPO 死亡剧本杀""注册制中外辩论赛""打新真相实验"等沉浸式设计，培养既懂规则、又有格局，既能建模估值、又能坚守底线的新时代投资人才。</p>
+
+<!-- 图1 知识点定位图 -->
+<div class="figure">
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g-blue" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#3E7DBF"/><stop offset="1" stop-color="#1F5C99"/>
+    </linearGradient>
+    <linearGradient id="g-blue-light" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#9EC3E6"/><stop offset="1" stop-color="#6FA7D5"/>
+    </linearGradient>
+    <linearGradient id="g-orange" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#F5C77E"/><stop offset="1" stop-color="#E8A54B"/>
+    </linearGradient>
+    <linearGradient id="g-red" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#E36470"/><stop offset="1" stop-color="#B4232C"/>
+    </linearGradient>
+    <linearGradient id="g-cream" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#FFF4DA"/><stop offset="1" stop-color="#FBE3A8"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- 顶层：证券投资学四大模块 -->
+  <g filter="url(#soft)" font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="700">
+    <rect x="30"  y="24" width="190" height="46" rx="10" fill="url(#g-blue-light)"/>
+    <text x="125" y="52">证券与证券市场基础</text>
+    <rect x="240" y="24" width="190" height="46" rx="10" fill="url(#g-blue)"/>
+    <text x="335" y="52">证券发行与交易</text>
+    <rect x="450" y="24" width="190" height="46" rx="10" fill="url(#g-blue-light)"/>
+    <text x="545" y="52">证券交易市场与制度</text>
+    <rect x="660" y="24" width="210" height="46" rx="10" fill="url(#g-blue-light)"/>
+    <text x="765" y="52">证券市场的监管</text>
+  </g>
+
+  <!-- 分支线 -->
+  <g stroke="#B4232C" stroke-width="1.6" fill="none" stroke-dasharray="4,3">
+    <path d="M335,70 L335,100"/>
+    <path d="M335,110 L170,150"/>
+    <path d="M335,110 L335,150"/>
+    <path d="M335,110 L500,150"/>
+  </g>
+
+  <!-- 第二层：本单元三大知识板块 -->
+  <g filter="url(#soft)" font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="13" fill="#5B3A00" text-anchor="middle" font-weight="700">
+    <rect x="80"  y="150" width="180" height="46" rx="10" fill="url(#g-orange)"/>
+    <text x="170" y="170">2.1 发行市场与制度</text>
+    <text x="170" y="188" font-size="11" fill="#7A4E00" font-weight="500">发行方式 · 三大发行制度</text>
+
+    <rect x="245" y="150" width="180" height="46" rx="10" fill="url(#g-orange)"/>
+    <text x="335" y="170">2.1 发行定价与配售</text>
+    <text x="335" y="188" font-size="11" fill="#7A4E00" font-weight="500">市盈率法 · 询价 · 打新</text>
+
+    <rect x="410" y="150" width="180" height="46" rx="10" fill="url(#g-orange)"/>
+    <text x="500" y="170">2.2 上市的隐性门槛</text>
+    <text x="500" y="188" font-size="11" fill="#7A4E00" font-weight="500">铁三角：控制权·独立性·合规</text>
+  </g>
+
+  <!-- 中间聚焦：本案例定位 -->
+  <g filter="url(#soft)">
+    <rect x="150" y="228" width="440" height="54" rx="14" fill="url(#g-red)"/>
+    <text x="370" y="252" text-anchor="middle" font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="15" fill="#fff" font-weight="700">本案例｜Soulmate AI 闯关 IPO · 敲响新时代"诚信钟"</text>
+    <text x="370" y="271" text-anchor="middle" font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="12" fill="#FFE3B5">要不要上 · 在哪里上 · 能不能上 · 怎么上 · 上得好不好</text>
+  </g>
+
+  <!-- 承上启下箭头 -->
+  <g stroke="#B4232C" stroke-width="1.6" fill="none">
+    <path d="M170,196 L280,228" marker-end="url(#arr)"/>
+    <path d="M335,196 L370,228" marker-end="url(#arr)"/>
+    <path d="M500,196 L460,228" marker-end="url(#arr)"/>
+  </g>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B4232C"/>
+    </marker>
+  </defs>
+
+  <!-- 底层：工具与思政落点 -->
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="12" text-anchor="middle" font-weight="600" filter="url(#soft)">
+    <!-- 专业能力 -->
+    <rect x="60"  y="330" width="150" height="50" rx="10" fill="url(#g-cream)" stroke="#E8A54B"/>
+    <text x="135" y="352" fill="#7A4E00">板块选择能力</text>
+    <text x="135" y="370" font-size="10.5" fill="#7A4E00" font-weight="500">主板/科创/创业/北交/港</text>
+
+    <rect x="230" y="330" width="150" height="50" rx="10" fill="url(#g-cream)" stroke="#E8A54B"/>
+    <text x="305" y="352" fill="#7A4E00">审核制度辨识</text>
+    <text x="305" y="370" font-size="10.5" fill="#7A4E00" font-weight="500">审批·核准·注册三段跃</text>
+
+    <rect x="400" y="330" width="150" height="50" rx="10" fill="url(#g-cream)" stroke="#E8A54B"/>
+    <text x="475" y="352" fill="#7A4E00">尽调铁三角</text>
+    <text x="475" y="370" font-size="10.5" fill="#7A4E00" font-weight="500">控制权·独立性·合规</text>
+
+    <rect x="570" y="330" width="150" height="50" rx="10" fill="url(#g-cream)" stroke="#E8A54B"/>
+    <text x="645" y="352" fill="#7A4E00">定价与打新</text>
+    <text x="645" y="370" font-size="10.5" fill="#7A4E00" font-weight="500">市盈率·询价·破发</text>
+
+    <!-- 思政落点 -->
+    <rect x="60"  y="395" width="150" height="46" rx="10" fill="#EEF6EF" stroke="#2F7A48"/>
+    <text x="135" y="416" fill="#2F7A48">金融为民</text>
+    <text x="135" y="432" font-size="10.5" fill="#2F7A48" font-weight="500">服务实体经济</text>
+
+    <rect x="230" y="395" width="150" height="46" rx="10" fill="#EEF6EF" stroke="#2F7A48"/>
+    <text x="305" y="416" fill="#2F7A48">制度自信</text>
+    <text x="305" y="432" font-size="10.5" fill="#2F7A48" font-weight="500">中国方案·渐进改革</text>
+
+    <rect x="400" y="395" width="150" height="46" rx="10" fill="#EEF6EF" stroke="#2F7A48"/>
+    <text x="475" y="416" fill="#2F7A48">诚信法治</text>
+    <text x="475" y="432" font-size="10.5" fill="#2F7A48" font-weight="500">申报即担责</text>
+
+    <rect x="570" y="395" width="150" height="46" rx="10" fill="#EEF6EF" stroke="#2F7A48"/>
+    <text x="645" y="416" fill="#2F7A48">敬畏理性</text>
+    <text x="645" y="432" font-size="10.5" fill="#2F7A48" font-weight="500">打新破发·金融素养</text>
+  </g>
+
+  <!-- 右侧总纲小标 -->
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="12">
+    <rect x="750" y="150" width="120" height="46" rx="8" fill="#FCEEEF" stroke="#B4232C"/>
+    <text x="810" y="170" text-anchor="middle" fill="#B4232C" font-weight="700">2 课时</text>
+    <text x="810" y="186" text-anchor="middle" fill="#B4232C" font-size="10.5">案例聚焦范围</text>
+
+    <rect x="750" y="330" width="120" height="50" rx="8" fill="#F4EEDF" stroke="#C9A34E"/>
+    <text x="810" y="352" text-anchor="middle" fill="#7A4E00" font-weight="700">四大能力</text>
+    <text x="810" y="370" text-anchor="middle" fill="#7A4E00" font-size="10.5">对接岗位胜任力</text>
+
+    <rect x="750" y="395" width="120" height="46" rx="8" fill="#EEF6EF" stroke="#2F7A48"/>
+    <text x="810" y="416" text-anchor="middle" fill="#2F7A48" font-weight="700">四重思政</text>
+    <text x="810" y="432" text-anchor="middle" fill="#2F7A48" font-size="10.5">价值观内化落点</text>
+  </g>
+
+  <!-- 侧栏标签 -->
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="12" font-weight="700">
+    <text x="12" y="52"  fill="#1F5C99" writing-mode="tb">课程</text>
+    <text x="12" y="172" fill="#B48200" writing-mode="tb">单元</text>
+    <text x="12" y="258" fill="#B4232C" writing-mode="tb">案例</text>
+    <text x="12" y="356" fill="#7A4E00" writing-mode="tb">能力</text>
+    <text x="12" y="418" fill="#2F7A48" writing-mode="tb">思政</text>
+  </g>
+</svg>
+<div class="fig-cap">图 1 &nbsp;教学案例知识点定位图</div>
+</div>
 
 <!-- ============ 二、教学目标 ============ -->
 <h2 class="section">二、教学目标</h2>
@@ -255,20 +386,133 @@
 <h3 class="sub">（二）课程设计思路</h3>
 <p>本案例整体设计立足 <em>"一家初创企业的上市成人礼"</em> 这条真实主线，遵循 <em>"梦想唤醒—制度明晰—规则赋能—价值内化"</em> 的四段递进逻辑，构建 <span class="line-badge badge-blue">专业明线</span> 与 <span class="line-badge badge-green">思政暗线</span> 双轨并行的教学架构。</p>
 
-<div class="axis">
-  <div class="a"><div class="k">梦想唤醒</div><div class="v">现象级社交应用的敲钟遐想 → 打破"上市=造富"幻象</div></div>
-  <div class="a"><div class="k">制度明晰</div><div class="v">审批制→核准制→注册制 → 制度自信 · 道路自信</div></div>
-  <div class="a"><div class="k">规则赋能</div><div class="v">板块选择 + 流程尽调 + 定价配售 → 专业硬实力</div></div>
-  <div class="a"><div class="k">价值内化</div><div class="v">隐性铁三角剧本杀 + 打新真相 → 诚信 · 敬畏 · 为民</div></div>
-</div>
+<!-- 图2 课程设计思路图 -->
+<div class="figure">
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="s1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F49AA3"/><stop offset="1" stop-color="#B4232C"/></linearGradient>
+    <linearGradient id="s2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F5C77E"/><stop offset="1" stop-color="#D89132"/></linearGradient>
+    <linearGradient id="s3" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#8CC79E"/><stop offset="1" stop-color="#2F7A48"/></linearGradient>
+    <linearGradient id="s4" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#A99BD6"/><stop offset="1" stop-color="#6B5AA8"/></linearGradient>
+    <linearGradient id="rail-blue" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#3E7DBF"/><stop offset="1" stop-color="#1F5C99"/></linearGradient>
+    <linearGradient id="rail-green" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#4CA76E"/><stop offset="1" stop-color="#2F7A48"/></linearGradient>
+    <filter id="soft2" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-opacity="0.2"/>
+    </filter>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B4232C"/>
+    </marker>
+  </defs>
 
-<div class="two-lines">
-  <div class="l bright"><h4>专业明线</h4>
-    <p>Soulmate AI 董事会 5 大议题：要不要上市 → 在哪里上市 → 能不能上市 → 怎么上市 → 上得好不好。全面覆盖 <em>发行市场结构、发行方式、发行制度、板块比较、发行程序、发行定价、配售与打新</em>。</p>
-  </div>
-  <div class="l dark"><h4>思政暗线</h4>
-    <p>四重价值主线嵌入每一议题：<em>金融为民</em>（服务实体）→ <em>制度自信</em>（中国方案）→ <em>诚信法治</em>（申报即担责）→ <em>敬畏理性</em>（打新破发）。让思政不"贴片"，而是长在专业骨骼里。</p>
-  </div>
+  <!-- 侧栏 -->
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="13" font-weight="700">
+    <rect x="10"  y="40"  width="70" height="80" rx="8" fill="#FCEEEF" stroke="#B4232C"/>
+    <text x="45" y="72"  text-anchor="middle" fill="#B4232C">设计</text>
+    <text x="45" y="94"  text-anchor="middle" fill="#B4232C">思路</text>
+
+    <rect x="10"  y="200" width="70" height="80" rx="8" fill="#EEF4FB" stroke="#1F5C99"/>
+    <text x="45" y="232" text-anchor="middle" fill="#1F5C99">专业</text>
+    <text x="45" y="254" text-anchor="middle" fill="#1F5C99">明线</text>
+
+    <rect x="10"  y="330" width="70" height="80" rx="8" fill="#EEF6EF" stroke="#2F7A48"/>
+    <text x="45" y="362" text-anchor="middle" fill="#2F7A48">思政</text>
+    <text x="45" y="384" text-anchor="middle" fill="#2F7A48">暗线</text>
+  </g>
+
+  <!-- 顶部四段主阶段（云朵/圆角矩形） -->
+  <g filter="url(#soft2)" font-family="Source Han Sans SC, PingFang SC, sans-serif" text-anchor="middle" fill="#fff">
+    <!-- 阶段1 -->
+    <rect x="100" y="30" width="180" height="100" rx="22" fill="url(#s1)"/>
+    <text x="190" y="66" font-size="18" font-weight="700">梦想唤醒</text>
+    <text x="190" y="90" font-size="12" opacity=".92">（起点）</text>
+    <text x="190" y="114" font-size="12" opacity=".92">敲钟遐想 · 财富错觉</text>
+    <!-- 阶段2 -->
+    <rect x="300" y="30" width="180" height="100" rx="22" fill="url(#s2)"/>
+    <text x="390" y="66" font-size="18" font-weight="700">制度明晰</text>
+    <text x="390" y="90" font-size="12" opacity=".95">（深化）</text>
+    <text x="390" y="114" font-size="12" opacity=".95">三十年三级跃迁</text>
+    <!-- 阶段3 -->
+    <rect x="500" y="30" width="180" height="100" rx="22" fill="url(#s3)"/>
+    <text x="590" y="66" font-size="18" font-weight="700">规则赋能</text>
+    <text x="590" y="90" font-size="12" opacity=".95">（实战）</text>
+    <text x="590" y="114" font-size="12" opacity=".95">板块·尽调·定价</text>
+    <!-- 阶段4 -->
+    <rect x="700" y="30" width="180" height="100" rx="22" fill="url(#s4)"/>
+    <text x="790" y="66" font-size="18" font-weight="700">价值内化</text>
+    <text x="790" y="90" font-size="12" opacity=".95">（落脚）</text>
+    <text x="790" y="114" font-size="12" opacity=".95">诚信·敬畏·为民</text>
+  </g>
+
+  <!-- 阶段间箭头 -->
+  <g stroke="#B4232C" stroke-width="2" fill="none">
+    <path d="M280,80 L300,80" marker-end="url(#arr2)"/>
+    <path d="M480,80 L500,80" marker-end="url(#arr2)"/>
+    <path d="M680,80 L700,80" marker-end="url(#arr2)"/>
+  </g>
+
+  <!-- 明线轨道 -->
+  <rect x="90" y="205" width="800" height="70" rx="35" fill="#EEF4FB" stroke="#1F5C99" stroke-width="1.5"/>
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" text-anchor="middle" fill="#1F5C99" font-size="12.5" font-weight="600">
+    <text x="190" y="232">敲钟遐想 vs 华为不上市</text>
+    <text x="190" y="252" font-size="11" font-weight="500" fill="#375A82">推演上市的真正意义</text>
+
+    <text x="390" y="232">审批→核准→注册制</text>
+    <text x="390" y="252" font-size="11" font-weight="500" fill="#375A82">中外注册制辩论赛</text>
+
+    <text x="590" y="232">五大板块 + 尽调铁三角</text>
+    <text x="590" y="252" font-size="11" font-weight="500" fill="#375A82">董事会决策 + 剧本杀</text>
+
+    <text x="790" y="232">定价·询价·破发</text>
+    <text x="790" y="252" font-size="11" font-weight="500" fill="#375A82">打新真相实验</text>
+  </g>
+
+  <!-- 明线连接线（阶段→轨道） -->
+  <g stroke="#1F5C99" stroke-width="1.4" fill="none" stroke-dasharray="4,3">
+    <path d="M190,130 L190,205"/>
+    <path d="M390,130 L390,205"/>
+    <path d="M590,130 L590,205"/>
+    <path d="M790,130 L790,205"/>
+  </g>
+
+  <!-- 暗线轨道 -->
+  <rect x="90" y="335" width="800" height="70" rx="35" fill="#EEF6EF" stroke="#2F7A48" stroke-width="1.5"/>
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" text-anchor="middle" fill="#2F7A48" font-size="12.5" font-weight="600">
+    <text x="190" y="362">金融为民</text>
+    <text x="190" y="382" font-size="11" font-weight="500" fill="#355F42">服务实体·上市不等于套现</text>
+
+    <text x="390" y="362">制度自信</text>
+    <text x="390" y="382" font-size="11" font-weight="500" fill="#355F42">中国方案·渐进式改革</text>
+
+    <text x="590" y="362">诚信法治</text>
+    <text x="590" y="382" font-size="11" font-weight="500" fill="#355F42">申报即担责·看门人有责</text>
+
+    <text x="790" y="362">敬畏理性</text>
+    <text x="790" y="382" font-size="11" font-weight="500" fill="#355F42">破除稳赚幻觉·金融素养</text>
+  </g>
+
+  <!-- 明线→暗线连接（表达"专业孕育价值"） -->
+  <g stroke="#2F7A48" stroke-width="1.4" fill="none" stroke-dasharray="4,3">
+    <path d="M190,275 L190,335"/>
+    <path d="M390,275 L390,335"/>
+    <path d="M590,275 L590,335"/>
+    <path d="M790,275 L790,335"/>
+  </g>
+
+  <!-- 轨道两端小圆帽 -->
+  <g>
+    <circle cx="90"  cy="240" r="7" fill="#1F5C99"/>
+    <circle cx="890" cy="240" r="7" fill="#1F5C99"/>
+    <circle cx="90"  cy="370" r="7" fill="#2F7A48"/>
+    <circle cx="890" cy="370" r="7" fill="#2F7A48"/>
+  </g>
+
+  <!-- 底部总纲 -->
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" text-anchor="middle" font-size="12.5" font-weight="600" fill="#7A1720">
+    <rect x="230" y="420" width="520" height="30" rx="15" fill="#FBF3F4" stroke="#B4232C"/>
+    <text x="490" y="440">三重角色切换：董事长视角 · 保荐人视角 · 投资者视角</text>
+  </g>
+</svg>
+<div class="fig-cap">图 2 &nbsp;课程设计思路图（明暗双线嵌套）</div>
 </div>
 
 <p>整个案例创新引入 <em>"董事长视角 + 保荐人视角 + 投资者视角"</em> 三重角色切换，让学生在同一家企业的不同身份中反复对撞规则与人性，最终形成兼具专业深度与价值高度的资本市场观。</p>
@@ -276,12 +520,135 @@
 <!-- ============ 五、实施过程 ============ -->
 <h2 class="section">五、实施过程</h2>
 
-<div class="flow">
-  <div class="step"><div class="num">1</div><div class="name">导</div><div class="desc">课前导学<br/>敲钟遐想 · 财富错觉</div></div>
-  <div class="step"><div class="num">2</div><div class="name">引</div><div class="desc">情境导入<br/>制度自信 · 中国方案</div></div>
-  <div class="step"><div class="num">3</div><div class="name">境</div><div class="desc">问题探究<br/>板块定位 · 战略选择</div></div>
-  <div class="step"><div class="num">4</div><div class="name">策</div><div class="desc">分析讨论<br/>死亡剧本杀 · 诚信底线</div></div>
-  <div class="step"><div class="num">5</div><div class="name">评</div><div class="desc">总结提升<br/>打新真相 · 理性内化</div></div>
+<!-- 图3 教学实施过程全景图 -->
+<div class="figure">
+<svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="c1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7FB3E3"/><stop offset="1" stop-color="#3E7DBF"/></linearGradient>
+    <linearGradient id="c2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#8CC79E"/><stop offset="1" stop-color="#2F7A48"/></linearGradient>
+    <linearGradient id="c3" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F5C77E"/><stop offset="1" stop-color="#D89132"/></linearGradient>
+    <linearGradient id="c4" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F49AA3"/><stop offset="1" stop-color="#B4232C"/></linearGradient>
+    <linearGradient id="c5" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#A99BD6"/><stop offset="1" stop-color="#6B5AA8"/></linearGradient>
+    <filter id="soft3" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <!-- 五个箭头形阶段（chevron） -->
+  <!-- chevron path: 每个箭头宽160, 高120, 向右尖 -->
+  <g filter="url(#soft3)" font-family="Source Han Sans SC, PingFang SC, sans-serif">
+    <!-- 1 导 -->
+    <path d="M30,30 L170,30 L200,90 L170,150 L30,150 L60,90 Z" fill="url(#c1)"/>
+    <text x="115" y="70" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">导</text>
+    <text x="115" y="92" text-anchor="middle" fill="#fff" font-size="12" opacity=".95">课前导学</text>
+    <text x="115" y="120" text-anchor="middle" fill="#fff" font-size="11" opacity=".9">敲钟遐想</text>
+    <text x="115" y="136" text-anchor="middle" fill="#fff" font-size="11" opacity=".9">戳穿造富错觉</text>
+
+    <!-- 2 引 -->
+    <path d="M200,30 L340,30 L370,90 L340,150 L200,150 L230,90 Z" fill="url(#c2)"/>
+    <text x="285" y="70" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">引</text>
+    <text x="285" y="92" text-anchor="middle" fill="#fff" font-size="12" opacity=".95">情境导入</text>
+    <text x="285" y="120" text-anchor="middle" fill="#fff" font-size="11" opacity=".9">三十年一跃</text>
+    <text x="285" y="136" text-anchor="middle" fill="#fff" font-size="11" opacity=".9">中外辩论赛</text>
+
+    <!-- 3 境 -->
+    <path d="M370,30 L510,30 L540,90 L510,150 L370,150 L400,90 Z" fill="url(#c3)"/>
+    <text x="455" y="70" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">境</text>
+    <text x="455" y="92" text-anchor="middle" fill="#fff" font-size="12" opacity=".95">问题探究</text>
+    <text x="455" y="120" text-anchor="middle" fill="#fff" font-size="11" opacity=".95">五大板块比较</text>
+    <text x="455" y="136" text-anchor="middle" fill="#fff" font-size="11" opacity=".95">服务国家战略</text>
+
+    <!-- 4 策 -->
+    <path d="M540,30 L680,30 L710,90 L680,150 L540,150 L570,90 Z" fill="url(#c4)"/>
+    <text x="625" y="70" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">策</text>
+    <text x="625" y="92" text-anchor="middle" fill="#fff" font-size="12" opacity=".95">分析讨论</text>
+    <text x="625" y="120" text-anchor="middle" fill="#fff" font-size="11" opacity=".9">IPO死亡剧本杀</text>
+    <text x="625" y="136" text-anchor="middle" fill="#fff" font-size="11" opacity=".9">诚信铁三角</text>
+
+    <!-- 5 评 -->
+    <path d="M710,30 L860,30 L880,90 L860,150 L710,150 L740,90 Z" fill="url(#c5)"/>
+    <text x="795" y="70" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">评</text>
+    <text x="795" y="92" text-anchor="middle" fill="#fff" font-size="12" opacity=".95">总结提升</text>
+    <text x="795" y="120" text-anchor="middle" fill="#fff" font-size="11" opacity=".9">打新真相 + AI</text>
+    <text x="795" y="136" text-anchor="middle" fill="#fff" font-size="11" opacity=".9">给爸妈的一封信</text>
+  </g>
+
+  <!-- 三行内容：教师/学生/思政 -->
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="11.5">
+    <!-- 教师行标签 -->
+    <rect x="10" y="170" width="60" height="30" rx="6" fill="#FCEEEF" stroke="#B4232C"/>
+    <text x="40" y="190" text-anchor="middle" fill="#B4232C" font-weight="700">教师</text>
+    <!-- 学生行标签 -->
+    <rect x="10" y="230" width="60" height="30" rx="6" fill="#EEF4FB" stroke="#1F5C99"/>
+    <text x="40" y="250" text-anchor="middle" fill="#1F5C99" font-weight="700">学生</text>
+    <!-- 思政行标签 -->
+    <rect x="10" y="290" width="60" height="30" rx="6" fill="#EEF6EF" stroke="#2F7A48"/>
+    <text x="40" y="310" text-anchor="middle" fill="#2F7A48" font-weight="700">思政</text>
+  </g>
+
+  <!-- 内容格子：五列 × 三行 -->
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="11" text-anchor="middle">
+    <!-- 列 x 中心：115, 285, 455, 625, 795 ; 宽140 -->
+    <!-- 教师 -->
+    <g fill="#7A1720">
+      <text x="115" y="188">发布敲钟挑战</text>
+      <text x="115" y="204">推送华为对照</text>
+
+      <text x="285" y="188">讲三段跃迁</text>
+      <text x="285" y="204">主持辩论赛</text>
+
+      <text x="455" y="188">板块对照解析</text>
+      <text x="455" y="204">腾讯20年追问</text>
+
+      <text x="625" y="188">冷面预审员</text>
+      <text x="625" y="204">抛《证券法》</text>
+
+      <text x="795" y="188">连连看抢答</text>
+      <text x="795" y="204">AI双维评价</text>
+    </g>
+    <!-- 学生 -->
+    <g fill="#1F3A5C">
+      <text x="115" y="248">董事长脑洞</text>
+      <text x="115" y="264">讨论区互动</text>
+
+      <text x="285" y="248">正反方PK</text>
+      <text x="285" y="264">3分钟检索</text>
+
+      <text x="455" y="248">分组研判板块</text>
+      <text x="455" y="264">选择上市路径</text>
+
+      <text x="625" y="248">抽角色/风险卡</text>
+      <text x="625" y="264">购买防御工具</text>
+
+      <text x="795" y="248">连线匹配</text>
+      <text x="795" y="264">写给爸妈的信</text>
+    </g>
+    <!-- 思政 -->
+    <g fill="#26523A">
+      <text x="115" y="308">启蒙金融为民</text>
+      <text x="115" y="324">上市≠套现</text>
+
+      <text x="285" y="308">树立制度自信</text>
+      <text x="285" y="324">读懂中国方案</text>
+
+      <text x="455" y="308">服务国家战略</text>
+      <text x="455" y="324">卡脖子攻关</text>
+
+      <text x="625" y="308">诚信是通行证</text>
+      <text x="625" y="324">看门人有责</text>
+
+      <text x="795" y="308">敬畏市场</text>
+      <text x="795" y="324">理性守护家庭</text>
+    </g>
+  </g>
+
+  <!-- 底部主线注释 -->
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" text-anchor="middle" font-size="12.5" font-weight="700">
+    <rect x="80" y="345" width="740" height="28" rx="14" fill="#FBF6E7" stroke="#C9A34E"/>
+    <text x="450" y="364" fill="#7A4E00">一企贯穿：Soulmate AI · 从"要不要上"到"上得好不好"的完整成人礼</text>
+  </g>
+</svg>
+<div class="fig-cap">图 3 &nbsp;教学实施过程全景图（导-引-境-策-评）</div>
 </div>
 
 <h3 class="sub">（一）课前导学（导）：敲钟遐想，戳穿造富错觉</h3>
