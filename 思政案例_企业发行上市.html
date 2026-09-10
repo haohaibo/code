@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>课程思政教学案例设计 · 敲响新时代的"诚信钟"——从Soulmate AI闯关IPO看注册制下的中国资本市场答卷</title>
+<style>
+  :root{
+    --red:#B4232C;         /* 主色：中国红 */
+    --red-deep:#7A1720;
+    --gold:#C9A34E;        /* 辅色：钟金 */
+    --ink:#1F2937;
+    --ink-2:#374151;
+    --paper:#FFFDF7;
+    --line:#E5E1D6;
+    --blue:#1F5C99;        /* 明线：专业 */
+    --green:#2F7A48;       /* 暗线：思政 */
+    --bg:#F7F3EA;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",Georgia,serif;
+    line-height:1.75;}
+  .page{max-width:960px;margin:0 auto;padding:56px 56px 72px;background:var(--paper);
+    box-shadow:0 6px 30px rgba(0,0,0,.08);}
+  header.cover{
+    background:linear-gradient(135deg,var(--red) 0%,var(--red-deep) 100%);
+    color:#fff;padding:56px 56px 44px;position:relative;overflow:hidden;
+  }
+  header.cover::before{content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;
+    border-radius:50%;background:radial-gradient(circle,var(--gold) 0%,transparent 65%);opacity:.35;}
+  header.cover::after{content:"";position:absolute;left:-60px;bottom:-60px;width:260px;height:260px;
+    border-radius:50%;background:radial-gradient(circle,#fff 0%,transparent 70%);opacity:.08;}
+  .cover .tag{display:inline-block;border:1px solid rgba(255,255,255,.5);
+    padding:4px 12px;border-radius:20px;font-size:13px;letter-spacing:2px;margin-bottom:16px;}
+  .cover h1{font-size:34px;line-height:1.35;margin:8px 0 6px;font-weight:700;letter-spacing:1px;}
+  .cover h2{font-size:18px;font-weight:400;margin:0 0 22px;color:#F6E8CA;}
+  .cover .meta{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px;font-size:15px;margin-top:20px;}
+  .cover .meta div span{color:#F6E8CA;margin-right:8px;}
+
+  h2.section{font-size:24px;color:var(--red);margin:44px 0 14px;padding-left:14px;
+    border-left:6px solid var(--red);letter-spacing:1px;}
+  h3.sub{font-size:19px;color:var(--red-deep);margin:26px 0 10px;}
+  h4{font-size:16px;color:var(--ink);margin:16px 0 8px;}
+  p{margin:8px 0;text-align:justify;}
+  ul,ol{padding-left:24px;}
+  li{margin:4px 0;}
+  em{color:var(--red);font-style:normal;font-weight:600;}
+  .lead{font-size:16.5px;color:var(--ink-2);}
+
+  /* callouts */
+  .callout{border-left:4px solid var(--gold);background:#FBF6E7;padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0;}
+  .callout.blue{border-color:var(--blue);background:#EEF4FB;}
+  .callout.green{border-color:var(--green);background:#EEF6EF;}
+  .callout.red{border-color:var(--red);background:#FCEEEF;}
+
+  /* tables */
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;background:#fff;}
+  th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left;}
+  th{background:#F4EEDF;color:var(--red-deep);font-weight:600;}
+  td.center,th.center{text-align:center;}
+  tr:nth-child(even) td{background:#FBF9F2;}
+
+  /* double-line badges */
+  .line-badge{display:inline-block;font-size:12.5px;padding:2px 8px;border-radius:4px;margin-right:6px;
+    color:#fff;font-weight:600;letter-spacing:1px;}
+  .badge-blue{background:var(--blue);}
+  .badge-green{background:var(--green);}
+  .badge-gold{background:var(--gold);color:#3B2A00;}
+
+  /* two-column layout */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;}
+  .card h4{margin-top:0;color:var(--red);}
+
+  /* flow steps */
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0;}
+  .flow .step{background:#fff;border:1px solid var(--line);border-top:4px solid var(--red);
+    border-radius:8px;padding:12px;text-align:center;}
+  .flow .step .num{display:inline-block;background:var(--red);color:#fff;border-radius:50%;
+    width:26px;height:26px;line-height:26px;font-weight:700;margin-bottom:6px;}
+  .flow .step .name{font-weight:700;color:var(--red-deep);margin-bottom:4px;font-size:15px;}
+  .flow .step .desc{font-size:12.5px;color:var(--ink-2);line-height:1.5;}
+
+  /* design axis */
+  .axis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0;}
+  .axis .a{background:linear-gradient(180deg,#FCEEEF 0%,#fff 100%);
+    border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;}
+  .axis .a .k{color:var(--red);font-weight:700;font-size:15px;}
+  .axis .a .v{font-size:12.5px;color:var(--ink-2);}
+
+  /* quote */
+  blockquote{border-left:4px solid var(--red);background:#FBF3F4;color:var(--red-deep);
+    margin:12px 0;padding:10px 16px;font-style:normal;border-radius:0 8px 8px 0;}
+
+  /* two-line story: 明线 & 暗线 */
+  .two-lines{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+  .two-lines .l{border-radius:8px;padding:14px 16px;color:#fff;}
+  .two-lines .bright{background:linear-gradient(135deg,#1F5C99,#2E7BC7);}
+  .two-lines .dark{background:linear-gradient(135deg,#2F7A48,#4CA76E);}
+  .two-lines h4{color:#fff;margin-top:0;}
+
+  .footer{margin-top:48px;border-top:2px double var(--gold);padding-top:14px;
+    color:#7A6B4A;font-size:13px;text-align:center;letter-spacing:1px;}
+  @media (max-width:720px){
+    .page{padding:24px;}
+    header.cover{padding:36px 24px;}
+    .cover h1{font-size:26px;}
+    .flow{grid-template-columns:repeat(2,1fr);}
+    .axis{grid-template-columns:repeat(2,1fr);}
+    .two-lines,.grid2{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<header class="cover">
+  <span class="tag">课程思政 · 教学案例设计</span>
+  <h1>敲响新时代的"诚信钟"</h1>
+  <h2>——从 Soulmate AI 闯关 IPO 看注册制下的中国资本市场答卷</h2>
+  <div class="meta">
+    <div><span>课程名称</span>证券投资学</div>
+    <div><span>授课对象</span>金融学 / 投资学专业本科生</div>
+    <div><span>所在章节</span>第二章 2.1 证券发行市场与制度 · 2.2 上市的隐性门槛</div>
+    <div><span>课时安排</span>2 课时（90 分钟）</div>
+    <div><span>教学团队</span>证券投资课程组</div>
+    <div><span>案例定位</span>专业硬核 × 制度自信 × 诚信法治</div>
+  </div>
+</header>
+
+<div class="page">
+
+<!-- ============ 一、案例概述 ============ -->
+<h2 class="section">一、案例概述</h2>
+
+<h3 class="sub">（一）案例背景与定位</h3>
+<p class="lead">本教学案例选自《证券投资学》第二章"证券发行与交易"下的 <em>2.1 证券发行市场与制度</em> 及 <em>2.2 上市的隐性门槛</em> 两个教学单元，聚焦"企业首次公开发行并上市（IPO）"这一资本市场核心场景。授课时长 2 课时。</p>
+<p>IPO 是企业跨越"梦想家—上市公司"的成人礼，也是国家把金融"活水"引向实体经济、科技创新与"专精特新"的关键闸口。当下正值我国 <em>全面注册制</em> 改革全面落地、资本市场高质量发展的战略窗口期，本案例以虚拟初创企业"Soulmate AI"（现象级社交应用）为叙事载体，串联"要不要上市—在哪里上市—能不能上市—怎么上市—上得好不好"的完整链条，把制度自信、诚信法治、金融为民三条思政主线深植其中。</p>
+
+<h3 class="sub">（二）现实意义</h3>
+<p>2019 年科创板试点注册制，2020 年创业板落地，2023 年主板注册制全面推行——这是我国资本市场三十年"审批制→核准制→注册制"渐进式改革的历史性一跃。与此同时，土豆网创始人离婚"黄金两日"、八马茶业三闯 A 股折戟、Soul App 上市前夕造谣翻车等 <em>"隐性门槛"</em> 案例频频冲上热搜，折射出资本市场对 <em>诚信、独立、合规</em> 的极致敬畏。</p>
+<p>然而在传统教学中，学生常存在三大迷思：把注册制误读为"放水式上市"、把 IPO 视作单纯的财务游戏、把"打新"当作稳赚不赔的红利。本案例把最新监管动态、真实资本故事与《证券法》《公司法》的硬核条文熔铸一体，让学生在"当一次董事长"的沉浸推演中，同时读懂 <em>中国方案</em> 与 <em>市场敬畏</em>。</p>
+
+<h3 class="sub">（三）问题解决</h3>
+<p>本案例紧扣课程思政总体目标，重点破解学生在专业认知与价值判断中存在的三大痛点：</p>
+<ol>
+  <li><strong>破解"制度失语症"，筑牢制度自信。</strong> 针对学生对"审批制—核准制—注册制"的演进逻辑理解流于表面、对中美注册制差异认识模糊，容易陷入"照搬美国就是先进"的思维误区，本案例把 30 年改革脉络与"发展中大国渐进式改革"的中国智慧融入制度比较教学，引导学生从"制度是什么"走向"为什么这样、为什么现在"。</li>
+  <li><strong>破解"规则悬浮症"，坚守诚信法治底线。</strong> 针对学生对财务造假、关联交易、控制权风险等"隐性铁三角"缺乏敬畏，容易把 IPO 想象成"包装术"的功利倾向，本案例将证监会否决案例、注册制下的"申报即担责"精神深度嵌入尽调教学，把 <em>合规是底线、诚信是通行证</em> 打进学生的专业本能。</li>
+  <li><strong>破解"金融虚火症"，涵养金融为民初心。</strong> 针对学生把"打新破发""IPO 抑价"仅看作套利机会、把上市与实体经济割裂的偏差，本案例引入科创板"硬科技"定位与"卡脖子"产业链上市支持政策，引导学生理解 <em>资本市场服务实体经济、服务国家战略、服务人民美好生活</em> 的本源使命。</li>
+</ol>
+<p>基于上述靶向痛点，本案例彻底重构传统"念条文—做题目"的教学模式，通过"董事会沉浸推演""IPO 死亡剧本杀""注册制中外辩论赛""打新真相实验"等沉浸式设计，培养既懂规则、又有格局，既能建模估值、又能坚守底线的新时代投资人才。</p>
+
+<!-- ============ 二、教学目标 ============ -->
+<h2 class="section">二、教学目标</h2>
+
+<h3 class="sub">（一）知识目标</h3>
+<ol>
+  <li>准确界定 <em>初次发行 / 增资发行、公募 / 私募、直接 / 间接发行</em> 等基本类型的适用边界；</li>
+  <li>系统掌握我国"审批制—核准制—注册制"的演进逻辑，以及注册制与美国注册制的核心差异；</li>
+  <li>掌握 A 股主板、科创板、创业板、北交所、港股主板与创业板的上市定位与量化指标差异；</li>
+  <li>掌握市盈率法与询价法两大 IPO 定价方法的原理，理解"IPO 抑价""破发"的内在机制。</li>
+</ol>
+
+<h3 class="sub">（二）能力目标</h3>
+<ol>
+  <li>能够为一家初创企业选择合适的上市板块与上市路径，并说明理由；</li>
+  <li>能够识别 IPO 尽职调查中的"隐性铁三角"风险（控制权稳定性、独立性、合规性），并提出防范建议；</li>
+  <li>能够运用巨潮资讯网、交易所官网检索并读懂招股说明书关键信息；</li>
+  <li>能够理性判断打新收益与破发风险，形成基于基本面而非投机的投资决策能力。</li>
+</ol>
+
+<h3 class="sub">（三）综合素养</h3>
+<ol>
+  <li>形成 <em>规则思维 + 全球视野 + 家国情怀</em> 三位一体的资本市场认知；</li>
+  <li>在小组辩论、剧本杀、方案设计中提升团队协作、批判性思辨与专业表达能力；</li>
+  <li>建立敬畏市场、敬畏规则、敬畏投资者的职业素养。</li>
+</ol>
+
+<!-- ============ 三、课程思政教学目标 ============ -->
+<h2 class="section">三、课程思政教学目标</h2>
+<div class="grid2">
+  <div class="card">
+    <h4>1. 制度自信 · 道路自信</h4>
+    <p>透过三十年发行制度变迁，理解"渐进式改革"背后中国共产党领导下的资本市场改革方法论，坚定 <em>中国特色社会主义资本市场道路自信</em>。</p>
+  </div>
+  <div class="card">
+    <h4>2. 科技自立 · 金融为民</h4>
+    <p>透过科创板"硬科技"定位、专精特新"小巨人"上市支持，理解资本市场服务 <em>国家创新驱动战略、卡脖子攻关、共同富裕</em> 的使命担当。</p>
+  </div>
+  <div class="card">
+    <h4>3. 诚信为本 · 法治精神</h4>
+    <p>透过 IPO"隐性铁三角"死亡案例，涵养 <em>申报即担责、诚信是通行证</em> 的底线思维，把《证券法》从纸面立法内化为职业本能。</p>
+  </div>
+  <div class="card">
+    <h4>4. 敬畏市场 · 理性投资</h4>
+    <p>透过打新破发的真相实验，破除"新股稳赚"的投机幻觉，形成 <em>基本面为锚、风险为先</em> 的理性财富观与职业操守。</p>
+  </div>
+</div>
+
+<!-- ============ 四、课程思政设计 ============ -->
+<h2 class="section">四、课程思政设计</h2>
+
+<h3 class="sub">（一）教学内容与课程资源设计</h3>
+
+<h4>1. 教学内容</h4>
+<p>本案例在《证券投资学》知识体系中承担 <em>连接一级市场与二级市场、连接微观企业与宏观制度</em> 的枢纽作用：向上承接"证券与证券市场"的基础概念，向下衔接"证券交易与市场监管"。在价值引领层面，它是纠正学生"注册制=放水""IPO=造富"等片面认知的关键载体，能够把 <em>制度演进、真实案例、中外比较、监管新规</em> 深度融合。</p>
+<p>案例突破传统"念课本"的单一模式，实现 <em>法理原则、政策规范、真实故事、剧本推演四位一体</em> ：</p>
+<ul>
+  <li><strong>法理支撑：</strong>《中华人民共和国证券法》（2019 修订）、《首次公开发行股票注册管理办法》（2023）；</li>
+  <li><strong>政策规范：</strong>科创板 / 创业板 / 北交所定位规则、"再融资新规"、《关于全面实行注册制的实施意见》；</li>
+  <li><strong>真实案例：</strong>土豆网离婚"黄金两日"、八马茶业三闯 A 股折戟港股突围、Soul App 造谣翻车、翊翔文化"天地银行"被否；</li>
+  <li><strong>时代对照：</strong>华为为何暂不上市、大疆的融资选择、宁德时代科创板故事、中芯国际的"回 A"之路。</li>
+</ul>
+
+<h4>2. 课程资源</h4>
+<div class="grid2">
+  <div class="card">
+    <h4>（1）专业资源</h4>
+    <ul>
+      <li>《证券投资学》教材第二章配套 PPT 与题库；</li>
+      <li>上交所 / 深交所 / 北交所官网上市规则；</li>
+      <li>巨潮资讯网、同花顺 iFinD、Wind 招股说明书数据库；</li>
+      <li>中证指数有限公司行业市盈率数据。</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>（2）思政资源</h4>
+    <ul>
+      <li>习近平总书记关于资本市场 <em>"要建设一个规范、透明、开放、有活力、有韧性的资本市场"</em> 重要论述；</li>
+      <li>《中华人民共和国证券法》第九条、第十九条、第八十四条（信息披露与诚信义务）；</li>
+      <li>党的二十大报告"健全资本市场功能，提高直接融资比重"相关表述；</li>
+      <li>证监会《全面实行股票发行注册制主要制度规则发布实施》答记者问。</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>（3）案例资源</h4>
+    <ul>
+      <li>土豆网王微离婚案："黄金两日"错失 IPO 窗口；</li>
+      <li>八马茶业：三次 A 股折戟、港股突围背后的"豪门联姻"独立性质疑；</li>
+      <li>Soul App：造黄谣扳倒 Uki，上市戛然而止；</li>
+      <li>翊翔文化"天地银行"：产业导向与社会主义核心价值观；</li>
+      <li>康宁医院、三只松鼠、胜华波：审核铁三角"隐性红线"的真实判例。</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>（4）数字化资源</h4>
+    <ul>
+      <li>学习通课程平台（讨论区、抢答、AI 助教评分）；</li>
+      <li>同花顺行情软件（打新中签率、破发率查询）；</li>
+      <li>自制"IPO 死亡剧本杀"角色卡与风险卡；</li>
+      <li>"Soulmate AI 董事会"沉浸式 PPT。</li>
+    </ul>
+  </div>
+</div>
+
+<h3 class="sub">（二）课程设计思路</h3>
+<p>本案例整体设计立足 <em>"一家初创企业的上市成人礼"</em> 这条真实主线，遵循 <em>"梦想唤醒—制度明晰—规则赋能—价值内化"</em> 的四段递进逻辑，构建 <span class="line-badge badge-blue">专业明线</span> 与 <span class="line-badge badge-green">思政暗线</span> 双轨并行的教学架构。</p>
+
+<div class="axis">
+  <div class="a"><div class="k">梦想唤醒</div><div class="v">现象级社交应用的敲钟遐想 → 打破"上市=造富"幻象</div></div>
+  <div class="a"><div class="k">制度明晰</div><div class="v">审批制→核准制→注册制 → 制度自信 · 道路自信</div></div>
+  <div class="a"><div class="k">规则赋能</div><div class="v">板块选择 + 流程尽调 + 定价配售 → 专业硬实力</div></div>
+  <div class="a"><div class="k">价值内化</div><div class="v">隐性铁三角剧本杀 + 打新真相 → 诚信 · 敬畏 · 为民</div></div>
+</div>
+
+<div class="two-lines">
+  <div class="l bright"><h4>专业明线</h4>
+    <p>Soulmate AI 董事会 5 大议题：要不要上市 → 在哪里上市 → 能不能上市 → 怎么上市 → 上得好不好。全面覆盖 <em>发行市场结构、发行方式、发行制度、板块比较、发行程序、发行定价、配售与打新</em>。</p>
+  </div>
+  <div class="l dark"><h4>思政暗线</h4>
+    <p>四重价值主线嵌入每一议题：<em>金融为民</em>（服务实体）→ <em>制度自信</em>（中国方案）→ <em>诚信法治</em>（申报即担责）→ <em>敬畏理性</em>（打新破发）。让思政不"贴片"，而是长在专业骨骼里。</p>
+  </div>
+</div>
+
+<p>整个案例创新引入 <em>"董事长视角 + 保荐人视角 + 投资者视角"</em> 三重角色切换，让学生在同一家企业的不同身份中反复对撞规则与人性，最终形成兼具专业深度与价值高度的资本市场观。</p>
+
+<!-- ============ 五、实施过程 ============ -->
+<h2 class="section">五、实施过程</h2>
+
+<div class="flow">
+  <div class="step"><div class="num">1</div><div class="name">导</div><div class="desc">课前导学<br/>敲钟遐想 · 财富错觉</div></div>
+  <div class="step"><div class="num">2</div><div class="name">引</div><div class="desc">情境导入<br/>制度自信 · 中国方案</div></div>
+  <div class="step"><div class="num">3</div><div class="name">境</div><div class="desc">问题探究<br/>板块定位 · 战略选择</div></div>
+  <div class="step"><div class="num">4</div><div class="name">策</div><div class="desc">分析讨论<br/>死亡剧本杀 · 诚信底线</div></div>
+  <div class="step"><div class="num">5</div><div class="name">评</div><div class="desc">总结提升<br/>打新真相 · 理性内化</div></div>
+</div>
+
+<h3 class="sub">（一）课前导学（导）：敲钟遐想，戳穿造富错觉</h3>
+<p><span class="line-badge badge-blue">明线</span> 学习通发布任务："假如你是 Soulmate AI 的董事长，公司融了 5 轮，你在纠结要不要上市。请从<em>老板视角</em>思考：关于上市从 0 到 1，你会关心哪些维度的问题？回答关键词即可，前 10 名加分，AI 复读一律不给分。"</p>
+<p>同时推送两条对照素材：① 敲钟现场"从梦想家到亿万富翁的成人礼"短视频；② <em>华为为什么不上市、大疆为什么迟迟不上市</em> 深度评论。</p>
+<div class="callout green"><span class="line-badge badge-green">思政元素</span> 摒弃"上市=终点"的单一叙事，以"敲钟遐想 vs 华为不上市"的认知反差，唤醒学生思考企业上市的真正意义——<em>为发展融资、为战略赋能、为员工与股东共享成长</em>，而非为个人财富套现。为课堂"金融为民"主线埋下伏笔。</div>
+
+<h3 class="sub">（二）情境导入（引）：三十年一跃，读懂中国方案</h3>
+<p><span class="line-badge badge-blue">明线</span> 教师以时间轴讲透 <em>审批制（1990s）→ 核准制（2001）→ 注册制（2019 科创板 → 2020 创业板 → 2023 全面注册制）</em> 的三十年演进，配合《证券法》2019 修订核心变化的对照表。</p>
+<p>随后组织 <em>"注册制中外比较辩论赛"</em>：</p>
+<blockquote>正方：中国应该完全照搬美国注册制，全面市场化。<br/>反方：中国注册制必须保留"实质审核 + 严监管"的中国特色。</blockquote>
+<p>规则：3 分钟资料搜索时间，不能直读 AI 答案，必须转化为自己的语言；两组轮动 PK。教师在辩论后抛出关键追问：<em>"一个 14 亿人口、散户占比超 60% 的发展中大国，能不能一步跨到美国的成熟市场模式？为什么党中央用了 30 年才走到全面注册制？"</em></p>
+<div class="callout green"><span class="line-badge badge-green">思政元素</span> 引导学生看见改革背后的 <em>"渐进式、试点先行、系统集成"</em> 中国方法论：科创板是"试验田"、创业板是"接力棒"、全面注册制是"总攻"。让学生真正理解——制度不是从教科书里抄来的，而是从中国的国情、市情、民情中长出来的。<em>坚定制度自信，不等于封闭；开放借鉴，不等于照搬。</em></div>
+
+<h3 class="sub">（三）问题探究（境）：板块定位，服务国家战略</h3>
+<p><span class="line-badge badge-blue">明线</span> 教师抛出 Soulmate AI 的"能不能上市 + 在哪里上市"任务卡，并给出多板块对照表让学生分组研判：</p>
+
+<table>
+  <thead><tr><th>板块</th><th>定位关键词</th><th>核心量化门槛（示意）</th><th>典型企业</th></tr></thead>
+  <tbody>
+    <tr><td>主板</td><td>大盘蓝筹 · 成熟稳定</td><td>近三年净利润累计 ≥ 1.5 亿</td><td>茅台、工商银行</td></tr>
+    <tr><td>科创板</td><td>硬科技 · 关键核心</td><td>五套标准之一（含未盈利）</td><td>中芯国际、寒武纪</td></tr>
+    <tr><td>创业板</td><td>三创四新 · 成长型</td><td>近两年净利润累计 ≥ 5000 万</td><td>宁德时代、迈瑞医疗</td></tr>
+    <tr><td>北交所</td><td>专精特新 · 中小</td><td>市值 + 财务 / 研发四套标准</td><td>贝特瑞、连城数控</td></tr>
+    <tr><td>港股主板</td><td>国际化 · 多元</td><td>三套测试（盈利 / 市值 / 收入现金流）</td><td>腾讯、美团</td></tr>
+  </tbody>
+</table>
+
+<p>随后播放"腾讯 20 年 · 南非股东获利 1.87 万亿港元"短视频，教师抛出灵魂追问：<em>"如果当年腾讯没能在港股上市，中国互联网还会有今天吗？如果宁德时代当年没能登陆创业板，中国新能源汽车还能弯道超车吗？"</em></p>
+<div class="callout green"><span class="line-badge badge-green">思政元素</span> 引导学生透过板块看战略：<em>科创板承载"卡脖子"技术突围，创业板服务"三创四新"，北交所滋养"专精特新小巨人"</em>。资本市场板块结构不是随意的产品货架，而是国家创新驱动战略、共同富裕战略在金融领域的精心布局。让学生意识到——<em>选择一个板块，就是选择服务哪一类国家使命</em>。</div>
+
+<h3 class="sub">（四）分析讨论（策）："IPO 死亡剧本杀"，直面隐性铁三角</h3>
+<p><span class="line-badge badge-blue">明线</span> 进入本案例高潮环节——<em>"IPO 死亡剧本杀"</em>沙盘游戏。4-6 人一组抽取角色卡，模拟一家拟 IPO 企业闯关证监会审核。教师化身"冷面预审员"，随机抽取风险卡，逼学生用《证券法》武装自己。</p>
+
+<h4>角色卡（企业类型）</h4>
+<table>
+  <thead><tr><th>角色</th><th>企业画像</th><th>初始状态</th><th>隐性风险预警</th></tr></thead>
+  <tbody>
+    <tr><td>A 组：Soulmate AI</td><td>创始人夫妻共同持股 65%，社交应用</td><td>拟冲创业板</td><td>控制权 / 婚姻风险</td></tr>
+    <tr><td>B 组：茶香源</td><td>创始人岳父为最大客户经销商</td><td>拟冲主板</td><td>独立性 / 关联交易</td></tr>
+    <tr><td>C 组：翊翔文化</td><td>业务含"祭祀用品"（天地银行）</td><td>拟冲创业板</td><td>行业负面清单</td></tr>
+    <tr><td>D 组：康宁精神卫生</td><td>某县 8 人中 1 人为患者，数据存疑</td><td>拟冲港股</td><td>数据真实性 / 合规</td></tr>
+  </tbody>
+</table>
+
+<h4>风险卡（审核铁三角）</h4>
+<table>
+  <thead><tr><th>风险卡</th><th>触发事件</th><th>轻度（1-2）</th><th>中度（3-4）</th><th>致命（5-6）</th></tr></thead>
+  <tbody>
+    <tr><td>卡1：枕边人风险</td><td>实控人夫妻感情破裂</td><td>反馈问询</td><td>暂缓审议</td><td>否决（如土豆网黄金两日）</td></tr>
+    <tr><td>卡2：豪门甜蜜负担</td><td>关联方大额交易未披露</td><td>补充披露</td><td>撤回重报</td><td>否决（如八马茶业三闯）</td></tr>
+    <tr><td>卡3：行业黑名单</td><td>业务触碰社会主义核心价值观红线</td><td>剥离业务</td><td>暂停审核</td><td>直接否决（如翊翔文化）</td></tr>
+    <tr><td>卡4：诚信雷区</td><td>造谣抹黑竞对 / 财务造假</td><td>警示函</td><td>撤回并处罚</td><td>终身市场禁入（如 Soul）</td></tr>
+    <tr><td>卡5：数据失真</td><td>核心经营数据无法印证</td><td>现场检查</td><td>中止审核</td><td>否决 + 追责保荐人</td></tr>
+  </tbody>
+</table>
+
+<p><em>实战交锋：</em> 教师抛出经典质询——"贵司实控人夫妻近期是否存在离婚风险？岳父的经销业务占比多少？"当学生回答"这是私事"时，教师亮出 <em>《证券法》第十九条 · 控制权稳定条款</em> 和 <em>《IPO 审核问答（2020）》独立性 51 条</em>，一锤定音。购买了"婚前财产协议 / 关联交易剥离 / 合规咨询"防御卡的小组闯关成功，未购买的直接宣布"终止审核"。</p>
+
+<div class="callout green"><span class="line-badge badge-green">思政元素</span> 教师在剧本盘点时进行灵魂追问：<em>"如果你是保荐代表人，你会为一家造假的 IPO 客户签字吗？签下这个名字，可能是你三十年职业生涯的终结，也可能是几十万散户血汗钱的开始。"</em> 让学生在心跳加速的对抗中亲身体验"申报即担责"的分量，把 <em>诚信为本、合规为界、看门人有责</em> 深深烙进职业本能。让"信息披露的真实、准确、完整"从八字口号，变成十指连心的敬畏。</div>
+
+<h3 class="sub">（五）总结提升（评）：打新真相实验，淬炼理性投资观</h3>
+<p><span class="line-badge badge-blue">明线</span> 课堂进入最终输出环节。教师切换 <em>投资者视角</em> ，抛出真实数据：</p>
+<ul>
+  <li>2023 年 A 股新股上市首日 <em>破发率约 20%</em>；</li>
+  <li>港股新股首日破发率长期在 <em>40%–50%</em>；</li>
+  <li>科创板打新中签率约 <em>0.03%–0.05%</em>，散户中签概率远低于机构。</li>
+</ul>
+
+<h4>课内输出 —— "打新真相连连看"</h4>
+<p>教师发起抢答游戏：PPT 展示 8 种打新情境与 8 种收益归属，学生快速连线匹配。教师逐条解析背后的定价机制、配售规则与市场博弈。</p>
+
+<table>
+  <thead><tr><th>情境</th><th>结果预判</th></tr></thead>
+  <tbody>
+    <tr><td>1. 顶流赛道新股 · 询价上限 · 机构抢筹</td><td>A. 首日破发概率高，看似"香"实则"贵"</td></tr>
+    <tr><td>2. 硬科技未盈利企业 · 五套标准之一</td><td>B. 估值博弈激烈，需看基本面</td></tr>
+    <tr><td>3. 港股中概回归 · 老股东套现</td><td>C. 破发概率较高，警惕接盘</td></tr>
+    <tr><td>4. 北交所"专精特新"小巨人</td><td>D. 流动性折价，需长期视角</td></tr>
+    <tr><td>5. 主板大盘蓝筹 · 询价合理</td><td>E. 稳健收益，中签率极低</td></tr>
+    <tr><td>6. 定价明显高于行业平均市盈率</td><td>F. 破发高风险，理性回避</td></tr>
+    <tr><td>7. 荷兰式招标 vs 美国式招标</td><td>G. 单一价格 vs 多重价格，成本差异明显</td></tr>
+    <tr><td>8. 战略配售锁定期届满</td><td>H. 潜在减持压力，注意二级冲击</td></tr>
+  </tbody>
+</table>
+
+<h4>课后延展 —— "给爸妈的一封信"+ AI 双维评价</h4>
+<p>教师发布终极任务："以专业投资人的身份，给你的父母或亲友写一封 800 字的信，说明：① 什么样的新股值得打；② 什么样的新股要理性回避；③ 为什么普通投资者最需要的不是'内幕消息'而是'规则常识'。"</p>
+<p>学生将信件上传至学习通，AI 助教从 <em>专业严谨度</em> 与 <em>金融为民度</em> 两个维度自动评分与生成画像。</p>
+
+<div class="callout green"><span class="line-badge badge-green">思政元素</span> 学生在写信过程中顿悟：<em>真正的专业不是帮谁一夜暴富，而是帮更多普通家庭避开"稳赚神话"的陷阱</em>。教师在展示优秀信件时总结金句：<em>"资本市场的钟声不是财富的号角，而是责任的号角。学证券投资的最高价值，不是让自己发财，而是让千万个家庭的养老钱、教育钱、看病钱，能被规则守护、被专业照亮、被良知敬畏。"</em> 由此把"金融为民、敬畏市场"的价值观从课堂带回家庭、带向社会，形成完整育人闭环。</div>
+
+<!-- ============ 六、教学成效 ============ -->
+<h2 class="section">六、教学成效与评价</h2>
+<p>本案例通过学生在课堂学习和任务完成中的实际表现评价教学成效。重点观察学生是否真正掌握发行上市的核心规则，能否运用所学知识为拟上市企业设计合理路径并识别隐性风险；同时判断其在面对造富诱惑、信息不对称、投机浪潮时，是否能够坚持理性、审慎、合规的价值选择。教师根据各环节评价结果动态调整案例难度与引导方式，让评价真正服务于教学改进。</p>
+
+<h3 class="sub">课程目标达成评价矩阵</h3>
+<table>
+  <thead><tr><th>目标维度</th><th>评价方式与环节</th><th>评价观测点</th></tr></thead>
+  <tbody>
+    <tr>
+      <td rowspan="2"><strong>知识目标</strong></td>
+      <td>随堂盲测："打新真相连连看"抢答；<br/>互动问答：注册制辩论赛发言；<br/>课后测验：学习通客观题。</td>
+      <td>● 能否在规定时间内 100% 准确连线打新情境与结果预判；<br/>● 能否准确辨析审批制 / 核准制 / 注册制三大制度的核心差异；<br/>● 能否准确陈述主板 / 科创板 / 创业板 / 北交所 / 港股的定位与门槛。</td>
+    </tr>
+    <tr>
+      <td>案例研判：为 Soulmate AI 选择上市板块并说明理由。</td>
+      <td>● 板块推荐理由是否体现"企业属性—板块定位—国家战略"三层匹配。</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><strong>能力目标</strong></td>
+      <td>过程推演："IPO 死亡剧本杀"沙盘游戏。</td>
+      <td>● 在剧本高压推演中，能否成功识别并规避控制权 / 独立性 / 合规性三大隐性红线；<br/>● 能否说明保荐人、律师、会计师在尽调中的分工与责任边界。</td>
+    </tr>
+    <tr>
+      <td>实战作业："给爸妈的一封信"投资建议书。</td>
+      <td>● 是否运用市盈率、破发率、中签率等专业指标；<br/>● 是否引用真实案例与最新监管规则；<br/>● 语言是否兼具专业性与普及性。</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>价值目标</strong></td>
+      <td>行为观测：辩论赛与剧本杀中的价值取向复盘。</td>
+      <td>● 制度自信测试：能否辩证看待中美注册制差异，避免"照搬照抄"倾向；<br/>● 底线思维测试：在剧本中是否表现出对造假、造谣、关联交易的坚决拒绝。</td>
+    </tr>
+    <tr>
+      <td>双维评价：学习通 AI"专业严谨度 + 金融为民度"量表打分。</td>
+      <td>● 投资建议信是否体现"服务普通家庭、警示投机风险"的价值取向；<br/>● 是否传递"资本市场服务实体、金融为民"的职业信念。</td>
+    </tr>
+    <tr>
+      <td>价值反思：课后"敲钟感言"微日志（200 字）。</td>
+      <td>● 学生能否用自己的话说清楚——为什么中国需要注册制？为什么诚信是 IPO 的通行证？为什么打新不是"稳赚"？</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="sub">预期成效</h3>
+<div class="grid2">
+  <div class="card"><h4>专业维度</h4>
+    <p>学生能独立完成一次"从 0 到 1"的 IPO 路径设计，能识读一份真实招股说明书的核心风险，能理性评估打新收益与破发概率，具备保荐助理、投研分析师岗位的入门能力。</p>
+  </div>
+  <div class="card"><h4>价值维度</h4>
+    <p>学生对注册制改革的道路自信显著提升，对财务造假的容忍度显著下降，对"金融为民、服务实体"的职业认同显著增强，形成 <em>规则思维 + 家国情怀 + 市场敬畏</em> 三位一体的专业人格。</p>
+  </div>
+</div>
+
+<!-- ============ 特色与创新 ============ -->
+<h2 class="section">七、案例特色与竞赛亮点</h2>
+<ol>
+  <li><strong>"一企贯穿、五轮推演"的叙事创新。</strong>以虚拟企业 Soulmate AI 为叙事主线，覆盖"要不要 / 在哪里 / 能不能 / 怎么上 / 上得好不好"五轮完整链条，避免思政元素"贴标签"式插入。</li>
+  <li><strong>"专业明线 + 思政暗线"双轨嵌套。</strong>四大思政主题（金融为民、制度自信、诚信法治、敬畏理性）与四大专业模块（板块选择、审核制度、尽调铁三角、定价配售）一一咬合，让价值观在专业里自然生长。</li>
+  <li><strong>"三重角色切换"的沉浸设计。</strong>学生在董事长、保荐人、投资者之间反复切换，从利益立场看规则、从职业立场看诚信、从家庭立场看理性，形成立体价值判断。</li>
+  <li><strong>"中外制度比较"的思辨强度。</strong>把注册制中外差异做成辩论赛，让学生自己发现"渐进式改革"的中国智慧，而不是被灌输结论。</li>
+  <li><strong>"AI 双维评价"的数字化闭环。</strong>用"专业严谨度 + 金融为民度"双维量表，让思政成效可量化、可追踪、可改进，回应新时代金课"两性一度"标准。</li>
+  <li><strong>"给爸妈一封信"的社会回响。</strong>把课堂学习转化为对身边家庭的金融普及，让思政从"课程"走向"社会"，真正践行育人闭环。</li>
+</ol>
+
+<div class="footer">
+  《证券投资学》课程组 · 课程思政教学案例设计 · 敲响新时代的"诚信钟"<br/>
+  ——让专业硬核有温度，让制度自信有深度，让金融为民有力度
+</div>
+</div>
+</body>
+</html>
