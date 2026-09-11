@@ -1,0 +1,110 @@
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="c1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#AFC6D9"/><stop offset="1" stop-color="#7C93A8"/></linearGradient>
+    <linearGradient id="c2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7FB3E3"/><stop offset="1" stop-color="#1F5C99"/></linearGradient>
+    <linearGradient id="c3" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#8CC79E"/><stop offset="1" stop-color="#2F7A48"/></linearGradient>
+    <linearGradient id="c4" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F5C77E"/><stop offset="1" stop-color="#D89132"/></linearGradient>
+    <linearGradient id="c5" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F49AA3"/><stop offset="1" stop-color="#B4232C"/></linearGradient>
+    <linearGradient id="c6" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#A99BD6"/><stop offset="1" stop-color="#6B5AA8"/></linearGradient>
+    <filter id="soft3" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#soft3)" font-family="Source Han Sans SC, PingFang SC, sans-serif" text-anchor="middle" fill="#fff">
+    <path d="M20,28 L160,28 L184,90 L160,152 L20,152 L44,90 Z" fill="url(#c1)"/>
+    <text x="96" y="70"  font-size="16" font-weight="800">课前判断</text>
+    <text x="96" y="94"  font-size="10.5" opacity=".96">线上 · 10 分钟</text>
+    <text x="96" y="118" font-size="10.5" opacity=".92">审核材料包</text>
+    <text x="96" y="134" font-size="10.5" opacity=".92">同意与否 + 理由</text>
+
+    <path d="M160,28 L300,28 L324,90 L300,152 L160,152 L184,90 Z" fill="url(#c2)"/>
+    <text x="236" y="70"  font-size="16" font-weight="800">开场设疑</text>
+    <text x="236" y="94"  font-size="10.5" opacity=".96">课堂 · 3 分钟</text>
+    <text x="236" y="118" font-size="10.5" opacity=".92">条件全符却未上市</text>
+    <text x="236" y="134" font-size="10.5" opacity=".92">悬念留至议题二</text>
+
+    <path d="M300,28 L440,28 L464,90 L440,152 L300,152 L324,90 Z" fill="url(#c3)"/>
+    <text x="376" y="70"  font-size="16" font-weight="800">该上哪里</text>
+    <text x="376" y="94"  font-size="10.5" opacity=".96">议题一 · 22 分钟</text>
+    <text x="376" y="118" font-size="10.5" opacity=".92">板块定位与国家战略</text>
+    <text x="376" y="134" font-size="10.5" opacity=".92">上市地与数据安全</text>
+
+    <path d="M440,28 L580,28 L604,90 L580,152 L440,152 L464,90 Z" fill="url(#c4)"/>
+    <text x="516" y="70"  font-size="16" font-weight="800">能不能上</text>
+    <text x="516" y="94"  font-size="10.5" opacity=".96">议题二 · 32 分钟</text>
+    <text x="516" y="118" font-size="10.5" opacity=".92">财务门槛与其边界</text>
+    <text x="516" y="134" font-size="10.5" opacity=".92">三道防线判例复盘</text>
+
+    <path d="M580,28 L720,28 L744,90 L720,152 L580,152 L604,90 Z" fill="url(#c5)"/>
+    <text x="656" y="70"  font-size="16" font-weight="800">谁来判断</text>
+    <text x="656" y="94"  font-size="10.5" opacity=".96">议题三 · 29 分钟</text>
+    <text x="656" y="118" font-size="10.5" opacity=".92">判断权的三次转移</text>
+    <text x="656" y="134" font-size="10.5" opacity=".92">辩论与权责分置</text>
+
+    <path d="M720,28 L862,28 L884,90 L862,152 L720,152 L744,90 Z" fill="url(#c6)"/>
+    <text x="798" y="70"  font-size="16" font-weight="800">该不该上</text>
+    <text x="798" y="94"  font-size="10.5" opacity=".96">收尾 3 分钟 + 课后</text>
+    <text x="798" y="118" font-size="10.5" opacity=".92">集体表决</text>
+    <text x="798" y="134" font-size="10.5" opacity=".92">同题复判与编码</text>
+  </g>
+
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="11.5">
+    <rect x="2" y="170" width="46" height="32" rx="6" fill="#FCEEEF" stroke="#B4232C"/>
+    <text x="25" y="191" text-anchor="middle" fill="#B4232C" font-weight="700">教师</text>
+    <rect x="2" y="232" width="46" height="32" rx="6" fill="#EEF4FB" stroke="#1F5C99"/>
+    <text x="25" y="253" text-anchor="middle" fill="#1F5C99" font-weight="700">学生</text>
+    <rect x="2" y="294" width="46" height="32" rx="6" fill="#EEF6EF" stroke="#2F7A48"/>
+    <text x="25" y="315" text-anchor="middle" fill="#2F7A48" font-weight="700">思政</text>
+  </g>
+
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" font-size="10.5" text-anchor="middle">
+    <g fill="#7A1720">
+      <text x="96"  y="188">发放材料包</text>
+      <text x="96"  y="204">采集原始判断</text>
+      <text x="236" y="188">呈现暂缓事实</text>
+      <text x="236" y="204">只设疑不解答</text>
+      <text x="376" y="188">板块定位对照</text>
+      <text x="376" y="204">给出三条跨境事实</text>
+      <text x="516" y="188">指标对表与追问</text>
+      <text x="516" y="204">逐条剖析判例</text>
+      <text x="656" y="188">梳理制度演进</text>
+      <text x="656" y="204">主持三轮辩论</text>
+      <text x="798" y="188">组织集体表决</text>
+      <text x="798" y="204">布置课后三项任务</text>
+    </g>
+    <g fill="#1F3A5C">
+      <text x="96"  y="250">以审核员身份</text>
+      <text x="96"  y="266">判断并说明理由</text>
+      <text x="236" y="250">核对发行条件</text>
+      <text x="236" y="266">发现无从解释</text>
+      <text x="376" y="250">五套标准对表</text>
+      <text x="376" y="266">论证板块与上市地</text>
+      <text x="516" y="250">分组设计问询</text>
+      <text x="516" y="266">反推被拦原因</text>
+      <text x="656" y="250">正反方三轮交锋</text>
+      <text x="656" y="266">完成权责拼图</text>
+      <text x="798" y="250">现场表决</text>
+      <text x="798" y="266">同题复判与提示书</text>
+    </g>
+    <g fill="#26523A">
+      <text x="96"  y="312">采集判断基线</text>
+      <text x="96"  y="328">不作任何引导</text>
+      <text x="236" y="312">区分技术判断</text>
+      <text x="236" y="328">与价值判断</text>
+      <text x="376" y="312">家国情怀</text>
+      <text x="376" y="328">服务国家战略与安全</text>
+      <text x="516" y="312">诚信法治</text>
+      <text x="516" y="328">申报即担责</text>
+      <text x="656" y="312">制度自信</text>
+      <text x="656" y="328">有效市场与有为政府</text>
+      <text x="798" y="312">金融为民</text>
+      <text x="798" y="328">投资者保护为底线</text>
+    </g>
+  </g>
+
+  <g font-family="Source Han Sans SC, PingFang SC, sans-serif" text-anchor="middle" font-size="12.5" font-weight="700">
+    <rect x="110" y="355" width="690" height="30" rx="15" fill="#FBF6E7" stroke="#C9A34E"/>
+    <text x="455" y="375" fill="#7A4E00">一企贯穿：Soulmate AI —— 从“能不能上”的技术判断，到“该不该上”的价值判断</text>
+  </g>
+</svg>
