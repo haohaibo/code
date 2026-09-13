@@ -47,12 +47,19 @@
     <text x="154" y="189" font-size="10.5" fill="#7A4E00" font-weight="500">发行方式 · 三大发行制度</text>
 
     <rect x="253" y="150" width="168" height="48" rx="10" fill="url(#g-orange)"/>
-    <text x="337" y="171">2.1 发行定价与配售</text>
+    <text x="337" y="171">2.3 发行定价与配售</text>
     <text x="337" y="189" font-size="10.5" fill="#7A4E00" font-weight="500">市盈率法 · 询价 · 破发</text>
 
     <rect x="436" y="150" width="168" height="48" rx="10" fill="url(#g-orange)"/>
     <text x="520" y="171">2.2 上市的隐性门槛</text>
     <text x="520" y="189" font-size="10.5" fill="#7A4E00" font-weight="500">控制权 · 独立性 · 合规性</text>
+
+    <rect x="70"  y="142" width="60" height="16" rx="8" fill="#B4232C"/>
+    <text x="100" y="154" font-size="9.5" fill="#fff" font-weight="700">课堂讲授</text>
+    <rect x="253" y="142" width="60" height="16" rx="8" fill="#C9A34E"/>
+    <text x="283" y="154" font-size="9.5" fill="#fff" font-weight="700">课后任务</text>
+    <rect x="436" y="142" width="60" height="16" rx="8" fill="#B4232C"/>
+    <text x="466" y="154" font-size="9.5" fill="#fff" font-weight="700">课堂讲授</text>
   </g>
 
   <g filter="url(#soft)">
