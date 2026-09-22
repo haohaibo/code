@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>从宇树、长鑫双案例看科创板新股定价锚制度 · 金奖框架定稿（执行详细版 v5）</title>
+<style>
+:root{
+  --ink:#1b1f26;--ink-2:#39414d;--ink-3:#6b7684;
+  --line:#e3e7ee;--line-2:#cfd6e2;
+  --bg:#f6f7fb;--card:#ffffff;
+  --brand:#1f4e79;--brand-2:#2e6da4;--brand-soft:#eaf1f8;
+  --gold:#9a6b12;--gold-soft:#fdf5e3;
+  --red:#a62a2a;--red-soft:#fceded;
+  --green:#1f6b4a;--green-soft:#e9f5ef;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Source Han Serif SC","Noto Serif CJK SC","Songti SC",STSong,"SimSun",Georgia,serif;
+  font-size:16.5px;line-height:1.85;-webkit-font-smoothing:antialiased;
+}
+.layout{display:grid;grid-template-columns:274px minmax(0,1fr);gap:0;max-width:1400px;margin:0 auto}
+/* ---------- 侧边目录 ---------- */
+nav.toc{
+  position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;
+  background:#fff;border-right:1px solid var(--line);padding:22px 16px 60px;
+  font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;font-size:13.5px;line-height:1.6;
+}
+nav.toc .brand{font-weight:700;color:var(--brand);font-size:14px;letter-spacing:.4px;margin-bottom:2px}
+nav.toc .ver{color:var(--ink-3);font-size:12px;margin-bottom:16px}
+nav.toc a{display:block;color:var(--ink-2);text-decoration:none;padding:5px 9px;border-radius:6px;border-left:2px solid transparent}
+nav.toc a:hover{background:var(--brand-soft);color:var(--brand)}
+nav.toc a.lv2{padding-left:22px;font-size:12.8px;color:var(--ink-3)}
+nav.toc a.active{background:var(--brand-soft);color:var(--brand);border-left-color:var(--brand);font-weight:600}
+nav.toc .grp{margin-top:12px;font-size:11.5px;letter-spacing:1px;color:#9aa4b2;padding-left:9px}
+/* ---------- 正文 ---------- */
+main{padding:34px 46px 120px;max-width:1010px}
+header.hero{background:linear-gradient(135deg,#1f4e79 0%,#2e6da4 62%,#4a90c2 100%);color:#fff;border-radius:14px;padding:30px 34px;margin-bottom:26px;box-shadow:0 8px 26px rgba(31,78,121,.18)}
+header.hero .kicker{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:12.5px;letter-spacing:2px;opacity:.85}
+header.hero h1{font-size:29px;line-height:1.45;margin:10px 0 8px;font-weight:700}
+header.hero .sub{font-size:15px;opacity:.93}
+header.hero .meta{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;font-family:"PingFang SC",sans-serif;font-size:12.5px}
+header.hero .meta span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:3px 10px;border-radius:99px}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 30px 30px;margin-bottom:22px;box-shadow:0 1px 3px rgba(20,30,50,.04)}
+h2{font-size:22px;margin:0 0 16px;padding-bottom:10px;border-bottom:2px solid var(--brand);color:var(--brand);font-weight:700}
+h2 .no{display:inline-block;background:var(--brand);color:#fff;font-size:13px;font-family:"PingFang SC",sans-serif;border-radius:6px;padding:1px 9px;margin-right:10px;vertical-align:3px}
+h3{font-size:18px;margin:26px 0 10px;color:var(--ink);font-weight:700;border-left:4px solid var(--brand-2);padding-left:10px}
+h4{font-size:16px;margin:18px 0 8px;color:var(--brand);font-weight:700}
+p{margin:9px 0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:5px 0}
+strong{color:#12324d}
+em{font-style:normal;background:linear-gradient(transparent 62%,#ffe9a8 62%);padding:0 2px}
+code{font-family:var(--mono);font-size:13.5px;background:#f0f3f8;border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:#1f4e79}
+/* 表格 */
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:14.2px;font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#fff}
+th,td{border:1px solid var(--line-2);padding:8px 10px;text-align:left;vertical-align:top;line-height:1.65}
+thead th{background:var(--brand-soft);color:#14405f;font-weight:700;white-space:nowrap}
+tbody tr:nth-child(even){background:#fafbfd}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:11.5px;font-family:"PingFang SC",sans-serif;padding:1px 7px;border-radius:4px;border:1px solid;white-space:nowrap}
+.t-wind{color:#14405f;background:#eaf1f8;border-color:#bcd3e6}
+.t-pub{color:#1f6b4a;background:var(--green-soft);border-color:#b7ddc9}
+.t-calc{color:var(--gold);background:var(--gold-soft);border-color:#e6d2a0}
+.t-new{color:#a62a2a;background:var(--red-soft);border-color:#eec4c4}
+/* 提示块 */
+.box{border-radius:10px;padding:14px 18px;margin:14px 0;border-left:4px solid}
+.box .bt{font-family:"PingFang SC",sans-serif;font-weight:700;font-size:14px;display:block;margin-bottom:4px}
+.box.key{background:var(--brand-soft);border-color:var(--brand)}
+.box.key .bt{color:var(--brand)}
+.box.warn{background:var(--red-soft);border-color:var(--red)}
+.box.warn .bt{color:var(--red)}
+.box.tip{background:var(--green-soft);border-color:var(--green)}
+.box.tip .bt{color:var(--green)}
+.box.gold{background:var(--gold-soft);border-color:var(--gold)}
+.box.gold .bt{color:var(--gold)}
+/* 公式 */
+.fml{background:#fbfcfe;border:1px solid var(--line-2);border-left:4px solid var(--brand-2);border-radius:8px;padding:14px 18px;margin:14px 0;font-family:"Cambria Math","Times New Roman",Georgia,serif;font-size:17px;text-align:center;line-height:2.1}
+.fml .no{float:right;color:var(--ink-3);font-size:13px;font-family:"PingFang SC",sans-serif}
+.fml .note{display:block;text-align:left;font-family:"PingFang SC",sans-serif;font-size:13px;color:var(--ink-3);margin-top:8px;line-height:1.7}
+var{font-style:italic;font-family:"Cambria Math","Times New Roman",serif}
+pre{background:#12233a;color:#e6edf6;border-radius:10px;padding:16px 18px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.7}
+pre .c{color:#8fa6bf}
+pre .k{color:#7fd1ff}
+pre .s{color:#ffd48f}
+figure{margin:18px 0;text-align:center}
+figure svg{max-width:100%;height:auto}
+figcaption{font-family:"PingFang SC",sans-serif;font-size:13px;color:var(--ink-3);margin-top:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mini{background:#fbfcfe;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.mini h5{margin:0 0 6px;font-size:14.5px;color:var(--brand);font-family:"PingFang SC",sans-serif}
+.chain{counter-reset:step;margin:14px 0;padding:0;list-style:none}
+.chain li{counter-increment:step;position:relative;padding:10px 12px 10px 46px;background:#fbfcfe;border:1px solid var(--line);border-radius:8px;margin:8px 0}
+.chain li::before{content:counter(step);position:absolute;left:12px;top:11px;width:22px;height:22px;border-radius:50%;background:var(--brand);color:#fff;font-size:12.5px;font-family:"PingFang SC",sans-serif;display:flex;align-items:center;justify-content:center}
+footer.end{color:var(--ink-3);font-size:13px;text-align:center;padding:30px 0 10px;font-family:"PingFang SC",sans-serif}
+@media (max-width:1000px){.layout{grid-template-columns:1fr}nav.toc{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--line)}main{padding:22px 16px 60px}.grid2{grid-template-columns:1fr}}
+@media print{
+  nav.toc{display:none}.layout{display:block}main{max-width:none;padding:0}
+  body{background:#fff;font-size:11pt}section.card{break-inside:auto;box-shadow:none;border:none;padding:0 0 10pt;margin:0 0 14pt}
+  header.hero{background:#fff!important;color:#000;box-shadow:none;border-bottom:2pt solid #000;border-radius:0}
+  header.hero .meta span{border-color:#999;color:#000}
+  h2{break-after:avoid}h3,h4{break-after:avoid}table{break-inside:auto}tr{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="toc" id="toc">
+  <div class="brand">定价锚制度 · 金奖框架</div>
+  <div class="ver">v5 执行详细版 · B类研究生组</div>
+  <div class="grp">总则</div>
+  <a href="#s0">0 · 版本变更与术语规范</a>
+  <a href="#s1">1 · 题目、主线与得分锚点</a>
+  <div class="grp">理论与方法</div>
+  <a href="#s2">2 · 理论架构：锚—容量二维模型</a>
+  <a href="#s2" class="lv2">2.1 定价模型与三命题</a>
+  <a href="#s3">3 · 文献检索清单</a>
+  <a href="#s4">4 · 实证设计（核心增量）</a>
+  <a href="#s4" class="lv2">4.1 样本与变量</a>
+  <a href="#s4" class="lv2">4.2 回归设定与预期符号</a>
+  <a href="#s4" class="lv2">4.3 稳健性与案例回填</a>
+  <a href="#s4" class="lv2">4.4 工作量与降级方案</a>
+  <div class="grp">写作执行</div>
+  <a href="#s5">5 · 五段式章节执行细则</a>
+  <a href="#s6">6 · 图表制作细则</a>
+  <a href="#s7">7 · 分工与数据核验任务单</a>
+  <a href="#s8">8 · 工作量证据链</a>
+  <div class="grp">冲奖</div>
+  <a href="#s9">9 · 答辩预案</a>
+  <a href="#s10">10 · 格式与合规底线</a>
+  <a href="#s11">11 · 四周执行节奏</a>
+  <div class="grp">附录</div>
+  <a href="#a1">附录A · Wind 取数字段速查</a>
+  <a href="#a2">附录B · 实证代码骨架</a>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="kicker">2026 年第十一届浙江省大学生金融创新大赛 · B 类案例分析 · 金奖冲刺框架</div>
+  <h1>从宇树、长鑫双案例看科创板新股定价锚制度</h1>
+  <div class="sub">主线：新股上市首日的价格，取决于场内有没有"锚"，以及锚能不能被足够的筹码容量承接。</div>
+  <div class="meta">
+    <span>版本 v5（题目与主线重构版）</span>
+    <span>正文 ≤ 15000 字</span>
+    <span>实证：模型 + 横截面回归 + 案例回填</span>
+    <span>目标：文本 ≥ 82 分</span>
+  </div>
+</header>
+
+<!-- ========================= 0 ========================= -->
+<section class="card" id="s0">
+<h2><span class="no">0</span>版本变更与术语规范</h2>
+
+<h3>0.1 相对上一版（v4《战略配售的悖论》）的四处结构性改动</h3>
+<div class="tw">
+<table>
+<thead><tr><th style="width:12%">维度</th><th style="width:34%">v4 旧版</th><th style="width:40%">v5 新版</th><th style="width:14%">改动理由</th></tr></thead>
+<tbody>
+<tr><td>题目</td><td>《战略配售的悖论：耐心资本为何没有定价权？》</td><td><strong>《从宇树、长鑫双案例看科创板新股定价锚制度》</strong></td><td>切口从"制度批判"转为"制度建设"，与大赛"金融创新"主题正向对齐</td></tr>
+<tr><td>核心概念</td><td>定价权—背书权分离</td><td><strong>定价锚缺位下的定价权下移</strong>（锚—容量二维框架）；"定价权—背书权分离"降为其中<em>一条子机制</em>（战配锁定 → 容量抽干）</td><td>单一概念解释力不足；锚是更上位、更可度量、更能落成制度的变量</td></tr>
+<tr><td>解释变量</td><td>战配比例、锁定期（与流通市值机械共线）</td><td><strong>锚强度指数 Anchor（三分项）× ln(首日流通市值)</strong>，战配比例只作渠道描述统计</td><td>避免共线质疑，且交互项直接来自模型推导，方法分含金量更高</td></tr>
+<tr><td>实证</td><td>散点图 + 单方程回归（可选降级）</td><td><strong>理论模型 → 三个可检验假设 → 三个被解释变量的横截面回归 → 五项稳健性 → 双案例残差回填</strong></td><td>对标第十届金奖"哪吒案例"的"有模型 + 有实证 + 案例闭环"范式</td></tr>
+</tbody></table>
+</div>
+
+<div class="box key"><span class="bt">一句话把新旧版串起来（答辩必背）</span>
+战略配售锁定的不是"耐心资本的善意"，而是<strong>定价所需的筹码容量</strong>；真正决定价格偏离程度的，是这家公司<strong>有没有一个可被检验的价值锚</strong>。无锚 × 小容量，就是宇树；有锚 × 大容量，就是长鑫。制度的答案不是限制战配，而是<strong>为无锚资产建立定价锚制度</strong>。
+</div>
+
+<h3>0.2 术语规范表（全文统一，写作前发全员）</h3>
+<div class="tw">
+<table>
+<thead><tr><th style="width:16%">概念</th><th style="width:16%">统一用词</th><th style="width:44%">首次出现时的表述</th><th style="width:12%">禁用</th></tr></thead>
+<tbody>
+<tr><td>本文核心变量 <span class="tag t-new">新增</span></td><td><strong>定价锚</strong>（valuation anchor）</td><td>"定价锚（valuation anchor，指投资者据以校准新股价格的可检验参照系，包括盈利锚、可比公司锚与研究覆盖锚）"</td><td>估值基准、标尺</td></tr>
+<tr><td>锚的强弱 <span class="tag t-new">新增</span></td><td><strong>锚强度 / 锚缺位</strong></td><td>"锚强度指数（Anchor Score，0—3 分）""锚缺位（anchor vacuum）"</td><td>没锚、锚断了</td></tr>
+<tr><td>筹码维度</td><td><strong>流通容量</strong></td><td>"流通容量（上市初期无限售流通市值，公告口径）"</td><td>盘子、票子</td></tr>
+<tr><td>参与申购的资金</td><td><strong>打新资金</strong></td><td>"打新资金（参与新股申购的投机性资金）"</td><td>彩票资金</td></tr>
+<tr><td>上市后接力的短线资金</td><td><strong>短线承接资金</strong></td><td>"打新获利了结后的短线承接资金"</td><td>游资（正文；数据名称除外）</td></tr>
+<tr><td>行为机理</td><td><strong>博彩偏好</strong>驱动的<strong>彩票型交易</strong></td><td>注明"（gambling preference / lottery-type stocks, Kumar, 2009）"</td><td>赌博心理</td></tr>
+<tr><td>官方表述</td><td><strong>盲目炒新</strong></td><td>引用监管风险提示文件时使用</td><td>—</td></tr>
+<tr><td>长期资本</td><td><strong>耐心资本</strong></td><td>"耐心资本（patient capital，长期持有、不随短期价格波动交易的资本）"</td><td>长钱（正文可用一次作比喻）</td></tr>
+<tr><td>子机制</td><td><strong>定价权—背书权分离</strong></td><td>第四部分机理（一）首次完整命名，说明其为"容量渠道"的制度成因</td><td>—</td></tr>
+<tr><td>价格发现结果</td><td><strong>纠偏成本</strong></td><td>"纠偏成本（价格从峰值回归至机构合理区间过程中的累计回撤幅度）"</td><td>暴跌损失</td></tr>
+</tbody></table>
+</div>
+<p style="color:var(--ink-3);font-size:14.5px">分寸提示："打新资金""短线承接资金"为中性描述，不贬损散户；涉及亏损的段落一律用"中小投资者"，与投资者保护立场一致。</p>
+</section>
+
+<!-- ========================= 1 ========================= -->
+<section class="card" id="s1">
+<h2><span class="no">1</span>题目、主线与得分锚点</h2>
+
+<h3>1.1 题目定稿与备选</h3>
+<div class="box gold"><span class="bt">首选题目（八字对仗升级版）</span>
+<span style="font-size:19px;font-weight:700;color:#12324d">《"锚"定价格，"制"定未来——从宇树、长鑫双案例看科创板新股定价锚制度》</span><br/>
+双关用两次（锚定／制定）；主标题内即含"价格"与"制"，评委只看主标题就知道研究对象是定价、落点是制度，不会误判为宏观战略类空泛选题；主标题两段恰好对应全文结构——前四章讲价格为何无锚，第五章讲制度如何建锚。
+</div>
+<ul>
+<li><strong>次选（最小改动版）</strong>：《"锚"定未来——从宇树、长鑫双案例看科创板新股定价锚制度》。保留谐音钩子；风险是"未来"一词在本赛道已被用过两轮（第十届《"联"手"贷"未来》《立"未来"新标》），且主标题仅四字，略显单薄。</li>
+<li><strong>保底（朴素陈述版）</strong>：《从宇树、长鑫双案例看科创板新股定价锚制度》。语义零歧义，但缺记忆钩子。</li>
+</ul>
+<div class="box warn"><span class="bt">两条硬性规范（任何版本都须遵守）</span>
+① 副标题必须写"<strong>从</strong>……双案例看"，缺介词读起来是半句话；<br/>
+② 主副标题用<strong>破折号</strong>而非冒号——历届金奖清一色为"对仗／谐音主标题 + 破折号副标题"（《金惠纾困，医保增效——"金惠保"下普惠医疗制度的创新》《破"报表"局限，立"未来"新标——基于北京银行重构科创信用生态的案例分析》），冒号是论文式写法，在本赛道显得不够"赛"。
+</div>
+<div class="box tip"><span class="bt">一致性要求（钩子必须接住）</span>
+主标题用了"未来"钩子，摘要末句与结语必须回扣。结语金句改为："给硬科技最好的支持，不只是让它上得来，更是让市场算得清——<strong>这是为下一批未盈利科技巨头提前锚定的未来</strong>。"与第五部分收束段的"制度准备 + 窗口期"首尾闭环。
+</div>
+<p><strong>浙江元素</strong>：宇树为杭州企业，题目不再加地名（已足够长），浙江落点固定在第三部分"案例的价值"中的"杭州 AI 企业上市潮"与浙江证监局辅导备案证据。</p>
+
+<h3>1.2 主线一句话</h3>
+<div class="box key"><span class="bt">主线</span>
+科创板已经解决了"让硬科技公司上得来"的问题，但还没有解决"让市场算得清"的问题。当发行人没有盈利锚、没有可比公司锚、没有研究覆盖锚时，价格只能由叙事和筹码博弈决定；<strong>战略配售锁定进一步抽干流通容量，使无锚定价的偏离被放大</strong>，价格发现最终以暴涨暴跌的高纠偏成本完成。破题之道是把"锚"从研究行为升级为<strong>发行制度的组成部分——新股定价锚制度</strong>。
+</div>
+
+<h3>1.3 分数情报与评分锚点（实核）</h3>
+<div class="grid2">
+<div class="mini"><h5>分数结构</h5>
+第十届 B 类研究生组金奖 82.61（文本 81.36 + 答辩 84.49）、银奖 81.27，<strong>金银差距仅 1.3 分</strong>；第九届金奖最高 87.55（文本 83.80 + 答辩 93.19，答辩翻盘型）。结论：金奖线约 82—87，<strong>答辩边际回报最高</strong>。</div>
+<div class="mini"><h5>B 类官方权重（附件1）</h5>
+选题意义 15% ／ 创新性 25% ／ <strong>案例资料详实性与分析方法合理性 30%</strong> ／ 工作量与工作难度 20% ／ 写作规范 10%。<br/>本框架第 4 节（实证）、第 7 节（核验任务单）、第 8 节（证据链）全部服务于后两项的 50 分。</div>
+</div>
+
+<h3>1.4 答辩开场一句话</h3>
+<div class="box gold"><span class="bt">开场（30 秒，脱稿）</span>
+"两只新股，首日同样暴涨四百多个点。一个月后，一个腰斩过半，一个稳步封王。差别不在公司好坏——差别在于，市场有没有办法给它算出一个价。我们把这个差别称为：<strong>定价锚的有无</strong>。"
+</div>
+</section>
+
+<!-- ========================= 2 ========================= -->
+<section class="card" id="s2">
+<h2><span class="no">2</span>理论架构：锚—容量二维模型</h2>
+
+<h3>2.1 机制链条（图 1，全文只出现一次）</h3>
+<figure>
+<svg viewBox="0 0 900 372" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#2e6da4"/></marker>
+  </defs>
+  <rect x="20" y="16" width="250" height="60" rx="9" fill="#eaf1f8" stroke="#2e6da4"/>
+  <text x="145" y="41" text-anchor="middle" font-size="15" font-weight="700" fill="#1f4e79">制度起点</text>
+  <text x="145" y="62" text-anchor="middle" font-size="12.5" fill="#39414d">第五套标准扩容 + 战略配售锁定</text>
+
+  <path d="M270,46 L330,46" stroke="#2e6da4" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="336" y="4" width="250" height="40" rx="9" fill="#fdf5e3" stroke="#9a6b12"/>
+  <text x="461" y="29" text-anchor="middle" font-size="13.5" font-weight="700" fill="#9a6b12">维度 A：锚强度（能不能算清）</text>
+  <rect x="336" y="52" width="250" height="40" rx="9" fill="#fceded" stroke="#a62a2a"/>
+  <text x="461" y="77" text-anchor="middle" font-size="13.5" font-weight="700" fill="#a62a2a">维度 F：流通容量（谁来承接）</text>
+
+  <path d="M586,24 C620,24 620,60 640,66" stroke="#2e6da4" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <path d="M586,72 C620,72 620,68 640,68" stroke="#2e6da4" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+  <rect x="646" y="46" width="234" height="60" rx="9" fill="#eaf1f8" stroke="#2e6da4"/>
+  <text x="763" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#1f4e79">定价权归属 θ</text>
+  <text x="763" y="90" text-anchor="middle" font-size="12" fill="#39414d">有锚机构 ⟷ 无锚打新/短线资金</text>
+
+  <path d="M763,106 L763,150" stroke="#2e6da4" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="560" y="156" width="320" height="64" rx="9" fill="#fff" stroke="#2e6da4" stroke-dasharray="4 3"/>
+  <text x="720" y="180" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1f4e79">价格形成 P* = V + θ·δ − F/(w+η)</text>
+  <text x="720" y="202" text-anchor="middle" font-size="12" fill="#6b7684">价值 V ＋ 叙事溢价 δ 的加权 − 容量折价</text>
+
+  <path d="M560,188 L500,188" stroke="#2e6da4" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="220" y="156" width="274" height="64" rx="9" fill="#e9f5ef" stroke="#1f6b4a"/>
+  <text x="357" y="180" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1f6b4a">价格发现质量</text>
+  <text x="357" y="202" text-anchor="middle" font-size="12" fill="#39414d">收敛速度 T*、偏离深度、纠偏成本</text>
+
+  <path d="M357,220 L357,258" stroke="#1f6b4a" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="150" y="264" width="600" height="56" rx="9" fill="#f6f7fb" stroke="#cfd6e2"/>
+  <text x="450" y="287" text-anchor="middle" font-size="14" font-weight="700" fill="#1b1f26">制度出口：新股定价锚制度（锚披露 · 锚供给 · 锚—容量匹配）</text>
+  <text x="450" y="308" text-anchor="middle" font-size="12" fill="#6b7684">第五部分三支柱建议，逐条对应链条断点</text>
+
+  <text x="30" y="352" font-size="11.5" fill="#9aa4b2">图 1　定价锚—流通容量二维机制链条：制度起点 → 两个维度 → 定价权归属 → 价格形成 → 发现质量 → 制度出口</text>
+</svg>
+<figcaption>图 1　锚—容量二维机制链条（绪论出图，后文各节回扣）</figcaption>
+</figure>
+
+<h3>2.2 定价模型（本文的"模型"部分，可在答辩现场黑板推导）</h3>
+<p>设新股内在价值 <var>V</var> 不可直接观测，上市首日市场由两类投资者构成：</p>
+<ul>
+<li><strong>有锚投资者（机构）</strong>：能形成估值判断 <var>V̂</var> = <var>V</var> + <var>ε</var>，估值误差方差与锚强度 <var>a</var> ∈ [0,1] 反向相关（<var>Var</var>(<var>ε</var>) = <var>σ</var>²/<var>a</var>）。在 CARA 效用与正态信念下，其股数需求为 <var>D<sub>M</sub></var> = <var>w</var>(<var>V̂</var> − <var>P</var>)，其中 <span class="fml" style="display:inline;padding:2px 8px;font-size:15px"><var>w</var> = <var>a</var> / (<var>γσ</var>²)</span>，<var>γ</var> 为风险厌恶系数。<em>锚越弱，<var>w</var> 越小；<var>a</var> → 0 时机构"集体沉默"，不报价、不纠偏。</em></li>
+<li><strong>无锚投资者（打新资金与短线承接资金）</strong>：不以现金流定价，而以叙事定价，信念为 <var>V</var> + <var>δ</var>（<var>δ</var> &gt; 0 为叙事溢价），需求 <var>D<sub>N</sub></var> = <var>η</var>(<var>V</var> + <var>δ</var> − <var>P</var>)，<var>η</var> ≈ <var>M</var>/<var>V</var> 由入场资金规模 <var>M</var> 决定。</li>
+<li><strong>供给</strong>：上市初期可交易筹码（流通容量）<var>F</var>。</li>
+</ul>
+<div class="fml"><span class="no">(1)</span><var>w</var>(<var>V</var> + <var>ε</var> − <var>P</var>) + <var>η</var>(<var>V</var> + <var>δ</var> − <var>P</var>) = <var>F</var>
+<span class="note">市场出清条件：两类投资者需求之和等于流通容量。</span></div>
+<div class="fml"><span class="no">(2)</span><var>E</var>[<var>P</var>*] − <var>V</var> = <strong><var>θ</var> · <var>δ</var> − <var>F</var> / (<var>w</var> + <var>η</var>)</strong>，其中 <var>θ</var> = <var>η</var> / (<var>w</var> + <var>η</var>)
+<span class="note">求解 (1) 并取期望得到<strong>首日溢价分解式</strong>：溢价 = 无锚资金的定价权份额 <var>θ</var> × 叙事溢价 <var>δ</var> − 容量折价项。<var>θ</var> 即"定价权归属"的连续度量。</span></div>
+
+<h4>由模型直接导出的三个命题</h4>
+<ol class="chain">
+<li><strong>命题 1（锚效应）</strong>：∂<var>θ</var>/∂<var>a</var> &lt; 0 ⟹ ∂(溢价)/∂<var>a</var> &lt; 0。<strong>锚强度越高，定价权越多地留在有锚机构手中，首日溢价越低、后续回撤越小。</strong></li>
+<li><strong>命题 2（容量效应）</strong>：∂(溢价)/∂<var>F</var> = −1/(<var>w</var> + <var>η</var>) &lt; 0。<strong>流通容量越小，同等资金推动下的价格偏离越大。</strong>战略配售锁定与网下限售正是压低 <var>F</var> 的制度渠道——"定价权—背书权分离"在此作为容量渠道的制度解释进入链条。</li>
+<li><strong>命题 3（交互，本文最具辨识度的一条）</strong>：∂²(溢价)/∂<var>a</var>∂<var>F</var> = <var>w</var>′(<var>a</var>)/(<var>w</var> + <var>η</var>)² &gt; 0。<strong>容量对价格偏离的影响随锚强度增强而衰减</strong>；等价表述：<em>小容量之所以危险，是因为它常与锚缺位同时出现；有锚的大市值新股即便流通盘不大，价格也不会脱轨。</em>该命题对应回归中的交互项 <code>Anchor × lnFloat</code>，是把"双案例对照"升级为"可证伪规律"的关键。</li>
+</ol>
+
+<h4>纠偏阶段（解释暴跌，连接第四部分）</h4>
+<p>设 <var>T</var> 期后基本面信息（季报、订单、竞争格局）公开，估值误差方差下降、<var>w</var> 上升，价格向 <var>V</var> 收敛。可得：收敛期的<strong>纠偏成本（最大回撤）与首日溢价同号同阶</strong>，而<strong>收敛速度 <var>T</var>* 随锚强度递增</strong>（有锚者靠财报即可完成校准，无锚者必须靠交易试错完成校准）。这解释了宇树"一个月腰斩"与长鑫"稳步上行"的差别，并给出第三个被解释变量。</p>
+
+<h3>2.3 双案例在二维空间中的定位（图 2）</h3>
+<figure>
+<svg viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+  <rect x="90" y="30" width="600" height="300" fill="#fbfcfe" stroke="#cfd6e2"/>
+  <line x1="390" y1="30" x2="390" y2="330" stroke="#cfd6e2" stroke-dasharray="4 4"/>
+  <line x1="90" y1="180" x2="690" y2="180" stroke="#cfd6e2" stroke-dasharray="4 4"/>
+  <rect x="90" y="30" width="300" height="150" fill="#fceded" opacity=".55"/>
+  <rect x="390" y="180" width="300" height="150" fill="#e9f5ef" opacity=".55"/>
+  <text x="240" y="58" text-anchor="middle" font-size="13.5" font-weight="700" fill="#a62a2a">Ⅰ 无锚 × 小容量：定价权完全下移</text>
+  <text x="240" y="78" text-anchor="middle" font-size="12" fill="#6b7684">高溢价 · 高换手 · 高纠偏成本</text>
+  <text x="540" y="58" text-anchor="middle" font-size="13" fill="#6b7684">Ⅱ 有锚 × 小容量：偏离可控</text>
+  <text x="240" y="312" text-anchor="middle" font-size="13" fill="#6b7684">Ⅲ 无锚 × 大容量：溢价被稀释</text>
+  <text x="540" y="312" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1f6b4a">Ⅳ 有锚 × 大容量：一日完成价格发现</text>
+
+  <circle cx="190" cy="105" r="9" fill="#a62a2a"/>
+  <text x="206" y="102" font-size="13.5" font-weight="700" fill="#a62a2a">宇树科技</text>
+  <text x="206" y="120" font-size="11.5" fill="#6b7684">流通盘 7.44% · 无盈利锚/可比锚</text>
+
+  <circle cx="595" cy="252" r="9" fill="#1f6b4a"/>
+  <text x="455" y="249" font-size="13.5" font-weight="700" fill="#1f6b4a" text-anchor="end">长鑫科技</text>
+  <text x="455" y="267" font-size="11.5" fill="#6b7684" text-anchor="end">巨额流通市值 · 周期切换后动态锚清晰</text>
+
+  <circle cx="250" cy="150" r="7" fill="#9a6b12"/>
+  <text x="264" y="154" font-size="12" fill="#9a6b12">影子样本：沈鼓集团（主板，同象限）</text>
+
+  <text x="390" y="360" text-anchor="middle" font-size="13" fill="#1b1f26">流通容量 F（ln 首日无限售流通市值）→</text>
+  <text x="34" y="185" font-size="13" fill="#1b1f26" transform="rotate(-90 34,185)">锚强度 a（Anchor Score 0—3）→</text>
+  <text x="90" y="384" font-size="11.5" fill="#9aa4b2">图 2　锚—容量二维象限：双案例并非"两只股票的比较"，而是同一规律在两个极端象限的演绎</text>
+</svg>
+<figcaption>图 2　双案例定位图（案例介绍末出图，与第四部分横截面散点图共用坐标语言）</figcaption>
+</figure>
+<div class="box tip"><span class="bt">为什么这个框架比 v4 更容易得"创新性 25 分"</span>
+① 提出可度量的新构念（锚强度指数）；② 把"战配悖论"这一已有讨论<strong>降维为容量渠道</strong>，形成对既有文献的<em>收编</em>而非重复；③ 交互项命题是<strong>可证伪</strong>的，且预测方向反直觉（"小容量本身不必然危险"）；④ 制度出口（锚披露要求）是当前监管文件尚未成文的具体方案。
+</div>
+</section>
+
+<!-- ========================= 3 ========================= -->
+<section class="card" id="s3">
+<h2><span class="no">3</span>文献检索清单（学生 C 主责）</h2>
+<p>检索渠道：知网 CNKI、Web of Science / Google Scholar、Wind 研报库。经典文献不限年份，中文文献重点近五年。<strong>维度 2（锚与可比估值）为本版新的主攻维度，务必挖透。</strong></p>
+<div class="tw">
+<table>
+<thead><tr><th style="width:5%">#</th><th style="width:17%">维度</th><th style="width:38%">核心文献</th><th style="width:22%">中文检索词</th><th style="width:18%">用在哪</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>IPO 抑价经典</td><td>Rock (1986) 赢家诅咒；Beatty &amp; Ritter (1986) 事前不确定性；Benveniste &amp; Spindt (1989)；Loughran &amp; Ritter (2002)</td><td>"IPO 抑价"近五年综述</td><td>绪论文献段；说明抑价是老问题、注册制是新场景</td></tr>
+<tr><td>2 <span class="tag t-new">主攻</span></td><td><strong>估值锚与可比法</strong></td><td>Tversky &amp; Kahneman (1974) 锚定启发式；Purnanandam &amp; Swaminathan (2004) 可比公司法下 IPO 系统性高估；Bhojraj &amp; Lee (2002) 可比公司选择；Kaplan &amp; Ruback (1995)；Trueman, Wong &amp; Zhang (2000) 无盈利互联网公司的非财务指标定价；Kim &amp; Ritter (1999) 用倍数给 IPO 定价</td><td>"可比公司估值""市销率 估值""未盈利企业 估值"</td><td>绪论文献缺口 + 第2节模型中 <var>a</var> 的理论依据 + 第五部分"锚披露"建议的学理来源</td></tr>
+<tr><td>3</td><td>流动性、容量与价格发现</td><td>Amihud &amp; Mendelson (1986)；Amihud (2002) 非流动性指标；Merton (1987) 投资者认知</td><td>"流通盘 股价""流动性溢价 A股"</td><td>命题 2 的理论依据</td></tr>
+<tr><td>4</td><td>战略配售与股份锁定</td><td>Brav &amp; Gompers (2003) 锁定的信号与监控；Field &amp; Hanka (2001) 锁定期满价格效应；Aggarwal, Krigman &amp; Womack (2002)</td><td>"战略配售 新股""限售解禁 股价"</td><td>容量渠道的制度解释；"定价权—背书权分离"的文献对话</td></tr>
+<tr><td>5</td><td>博彩偏好与噪声交易</td><td>Kumar (2009) 彩票型股票；Barberis &amp; Huang (2008)；De Long et al. (1990)；Shiller (2017) 叙事经济学</td><td>"彩票型股票""投资者情绪 新股""炒新"</td><td>模型中 <var>δ</var>（叙事溢价）与 <var>η</var>（无锚资金）的微观基础</td></tr>
+<tr><td>6</td><td>中国注册制与新股定价改革</td><td>近五年核心期刊实证；政策文件三件：科创板实施意见（2019）、上交所《发行上市审核规则适用指引第 10 号》（2026.6）、中长期资金入市指导意见</td><td>"注册制 新股定价效率""科创板 制度创新"</td><td>绪论制度背景 + 第五部分建议的规则接口</td></tr>
+<tr><td>7</td><td>耐心资本与中长期资金</td><td>中文为主，险资/社保参与战配的机制研究</td><td>"耐心资本""长周期考核""险资 战略配售"</td><td>第三部分拔高、"锚—容量匹配"建议</td></tr>
+</tbody></table>
+</div>
+<div class="box key"><span class="bt">文献缺口的标准表述（绪论原句，背下来）</span>
+"已有研究或聚焦抑价的信息不对称解释，或聚焦锁定机制的信号功能，<strong>较少讨论当发行人不具备可比估值基础时，定价权如何在投资者结构中重新分配</strong>。本文以锚强度与流通容量的二维框架回答这一问题，并给出可操作的制度接口。"
+</div>
+<p><strong>文献管理要求</strong>：每篇存档，摘录"作者／年份／期刊／核心结论一句话／本文用在哪"，做成文献卡片表 15—20 张，既是参考文献清单，也是查重与答辩的安全垫。</p>
+</section>
+
+<!-- ========================= 4 ========================= -->
+<section class="card" id="s4">
+<h2><span class="no">4</span>实证设计（本版核心增量）</h2>
+<div class="box gold"><span class="bt">设计原则：必要、可得、够用</span>
+① <strong>必要</strong>——横截面实证唯一的任务，是回答"这是个案还是系统规律"，并检验第 2 节模型的三个命题；<br/>
+② <strong>可得</strong>——全部变量可由 Wind 新股专题 + WSD/WSS 指标直接导出或一步计算，不依赖研报文本挖掘、不依赖付费数据库之外的数据；<br/>
+③ <strong>够用</strong>——主回归只有 <strong>2 个核心解释变量 + 1 个交互项</strong>，一张主表、一张稳健表、一张案例回填表，能在答辩 1 页 PPT 内讲完。
+</div>
+
+<h3 id="s4-1">4.1 样本、变量与数据来源</h3>
+<h4>样本</h4>
+<ul>
+<li><strong>范围</strong>：2019 年 7 月 22 日至数据截止日的全部科创板首发上市股票（预计 n ≈ 590—620）。</li>
+<li><strong>剔除</strong>：上市后 60 个交易日内退市或长期停牌者；核心变量缺失者。预计有效样本 n ≈ 560—590。</li>
+<li><strong>标红样本</strong>：宇树科技、长鑫科技作为 2026 年最新样本，在全部图中单独标红，并在 4.3 节做残差回填。</li>
+<li><strong>影子样本（稳健性用）</strong>：主板沈鼓集团等"低发行 PE + 低流通盘"个股，用于说明规律不限于科创板、且与发行定价高低无关。</li>
+</ul>
+
+<h4>变量定义总表</h4>
+<div class="tw">
+<table>
+<thead><tr><th style="width:9%">类别</th><th style="width:13%">变量</th><th style="width:34%">定义与计算</th><th style="width:26%">Wind 取数路径 / 字段</th><th style="width:18%">口径说明</th></tr></thead>
+<tbody>
+<tr><td rowspan="3"><strong>被解释</strong></td><td><code>UP1</code> 首日溢价</td><td>首日收盘价 ÷ 发行价 − 1</td><td>新股专题"上市首日涨跌幅"；或 <code>WSD close</code> ÷ <code>ipo_price</code></td><td>对应模型式 (2)</td></tr>
+<tr><td><code>CAR20</code> 纠偏方向</td><td>上市第 2—21 个交易日累计收益 − 科创 50（000688.SH）同期收益</td><td><code>WSD close</code> 序列自算</td><td>从首日收盘起算，剔除抑价本身</td></tr>
+<tr><td><code>MDD60</code> 纠偏成本</td><td>上市后 60 个交易日内最大回撤 =（区间最高收盘 − 其后最低收盘）÷ 区间最高收盘</td><td><code>WSD high/close</code> 序列自算</td><td>模型纠偏阶段的直接度量</td></tr>
+<tr><td rowspan="4"><strong>核心解释</strong></td><td><code>Anchor</code> 锚强度<br/><span class="tag t-new">本文构念</span></td><td>三分项加总，取值 0—3（稳健性中另做 PCA 连续版与分项版）</td><td>见下方分项表</td><td>指数构造须在正文用一个表讲清</td></tr>
+<tr><td>└ <code>A1</code> 盈利锚</td><td>上市前一完整会计年度归母净利润 &gt; 0 且扣非净利润 &gt; 0，取 1</td><td><code>WSS np_belongto_parcomsh</code>、<code>deductedprofit</code>（指定报告期）；可用招股书核对</td><td>第五套标准企业天然为 0</td></tr>
+<tr><td>└ <code>A2</code> 可比锚</td><td>发行市盈率（摊薄）可计算，且 0 &lt; 发行 PE ÷ 所属行业最近一月平均静态 PE ≤ 2，取 1</td><td><code>ipo_pe_diluted</code>；行业 PE 取自发行人《投资风险特别公告》披露值（中证指数口径）</td><td>亏损企业"发行 PE 不适用"直接记 0，逻辑自洽</td></tr>
+<tr><td>└ <code>A3</code> 覆盖锚</td><td>上市后 30 日内一致预测覆盖机构数 ≥ 3，取 1</td><td><code>WSS west_instnum</code>（指定日期）；缺失则用 Wind 研报库计数</td><td>度量"机构敢不敢给价"</td></tr>
+<tr><td><strong>调节</strong></td><td><code>lnFloat</code> 流通容量</td><td>ln(上市首日无限售流通市值)，单位亿元</td><td><code>WSS mkt_freeshares</code>（首日）或 <code>float_a_shares × close</code></td><td>模型中的 <var>F</var></td></tr>
+<tr><td><strong>交互</strong></td><td><code>Anchor × lnFloat</code></td><td>二者去中心化后相乘</td><td>—</td><td>直接检验命题 3</td></tr>
+<tr><td rowspan="6"><strong>控制</strong></td><td><code>lnSize</code></td><td>ln(实际募资总额)</td><td><code>ipo_amount</code></td><td>发行规模</td></tr>
+<tr><td><code>lnPE</code></td><td>ln(1 + 发行市盈率)，亏损者取 0 并加哑变量</td><td><code>ipo_pe_diluted</code></td><td>控制发行定价高低，回应"是不是发得太贵"</td></tr>
+<tr><td><code>UWRep</code></td><td>主承销商当年科创板承销家数是否居前十，是 = 1</td><td>新股专题"主承销商"字段汇总</td><td>承销商声誉</td></tr>
+<tr><td><code>GreenShoe</code></td><td>是否设置超额配售选择权，是 = 1</td><td>发行公告；Wind 新股专题"绿鞋"字段</td><td>稳定机制</td></tr>
+<tr><td><code>MktRet20</code></td><td>上市前 20 个交易日科创 50 收益率</td><td><code>WSD 000688.SH</code></td><td>市场情绪/打新热度</td></tr>
+<tr><td>FE</td><td>上市年份固定效应 + 申万二级行业固定效应</td><td><code>industry_sw</code></td><td>吸收制度变迁与行业差异</td></tr>
+<tr><td><strong>仅描述<br/>不入回归</strong></td><td><code>StratRatio</code> 战配比例<br/><code>LotRatio</code> 网上中签率<br/><code>LockMonths</code> 加权锁定期</td><td>战配股数 ÷ 发行股数；网上中签率；Σ(各档战配股数 × 锁定月数) ÷ 战配总股数</td><td>发行结果公告；<code>ipo_lotratio</code>、<code>ipo_subscription</code></td><td><strong>与 lnFloat 机械相关，入回归必被质疑共线</strong>；只用于"制度渠道"的相关系数与分组统计</td></tr>
+</tbody></table>
+</div>
+
+<div class="box warn"><span class="bt">共线性是主动设计，不是被动妥协（方法分得分点）</span>
+锁定的股份不进流通盘、发行量小则中签率低——<code>StratRatio</code>、<code>LotRatio</code> 与 <code>lnFloat</code> 之间存在<strong>会计恒等式级别的相关</strong>。正文必须写明：本文<strong>刻意</strong>只把外生程度更高的 <code>Anchor</code> 与 <code>lnFloat</code> 放入回归，战配变量以"制度渠道"的描述统计呈现（报告 <code>corr(StratRatio, lnFloat)</code> 及分组均值）。这样既保留了"战配锁定抽干容量"的制度叙事，又不让主回归带病上场。答辩高危问题第 3 题即由此消解。
+</div>
+
+<h3 id="s4-2">4.2 回归设定与预期符号</h3>
+<div class="fml"><span class="no">(3)</span><var>Y<sub>i</sub></var> = <var>α</var> + <var>β</var><sub>1</sub><var>Anchor<sub>i</sub></var> + <var>β</var><sub>2</sub><var>lnFloat<sub>i</sub></var> + <var>β</var><sub>3</sub>(<var>Anchor<sub>i</sub></var> × <var>lnFloat<sub>i</sub></var>) + <var>Γ</var>′<var>X<sub>i</sub></var> + <var>λ<sub>t</sub></var> + <var>μ<sub>j</sub></var> + <var>ε<sub>i</sub></var>
+<span class="note"><var>Y</var> 依次取 <code>UP1</code>、<code>CAR20</code>、<code>MDD60</code>；<var>λ<sub>t</sub></var> 为上市年份固定效应、<var>μ<sub>j</sub></var> 为行业固定效应；标准误在<strong>申万二级行业层面聚类</strong>；连续变量在 1% / 99% 分位 winsorize。列式安排：每个 <var>Y</var> 报告三列——(1) 仅核心变量 + FE；(2) 加控制变量；(3) 加交互项。</span></div>
+
+<h4>假设与预期符号表（先写下来，再跑回归——方法自觉性的直接证据）</h4>
+<div class="tw">
+<table>
+<thead><tr><th style="width:8%">假设</th><th style="width:30%">来自模型的命题</th><th class="num" style="width:10%">UP1</th><th class="num" style="width:10%">CAR20</th><th class="num" style="width:10%">MDD60</th><th style="width:32%">经济含义</th></tr></thead>
+<tbody>
+<tr><td><strong>H1</strong></td><td>命题 1：<code>Anchor</code> 的主效应</td><td class="num">β₁ &lt; 0</td><td class="num">β₁ &gt; 0</td><td class="num">β₁ &lt; 0</td><td>有锚的新股首日溢价更低、上市后不需要靠下跌纠偏、回撤更浅</td></tr>
+<tr><td><strong>H2</strong></td><td>命题 2：<code>lnFloat</code> 的主效应</td><td class="num">β₂ &lt; 0</td><td class="num">β₂ &gt; 0</td><td class="num">β₂ &lt; 0</td><td>流通容量越大，价格偏离越小、纠偏成本越低</td></tr>
+<tr><td><strong>H3</strong></td><td>命题 3：交互项</td><td class="num">β₃ &gt; 0</td><td class="num">β₃ &lt; 0</td><td class="num">β₃ &gt; 0</td><td><strong>容量的作用随锚强度增强而衰减</strong>：危险的不是小容量本身，而是"无锚 × 小容量"</td></tr>
+</tbody></table>
+</div>
+<p><strong>边际效应的呈现方式</strong>：在 <code>Anchor</code> = 0 与 <code>Anchor</code> = 3 两种情形下分别计算 <code>lnFloat</code> 的边际效应及其置信区间，画一张<strong>边际效应图（图 5）</strong>。这张图是把交互项讲给非计量背景评委听的最佳载体——"无锚组的斜率陡峭且显著，有锚组的斜率平坦且不显著"。</p>
+
+<div class="box key"><span class="bt">识别策略的诚实表述（正文照抄，答辩照背）</span>
+本文<strong>不主张因果识别</strong>。锚强度部分由企业属性内生决定，横截面回归给出的是"控制行业、年份、发行规模与市场情绪后的条件相关"。结论的可信度来自<strong>三重一致性</strong>：① 回归符号与模型推导的预期符号一致；② 双案例的机制过程证据（订单流、目标价、换手率、解禁反应）与回归含义一致；③ 稳健性检验与安慰剂检验未推翻上述模式。这种表述既避免了"准自然实验"的过度声称（该声称一定会被评委击穿），又守住了方法合理性的 30 分。
+</div>
+
+<h3 id="s4-3">4.3 稳健性检验与案例回填</h3>
+<div class="tw">
+<table>
+<thead><tr><th style="width:7%">编号</th><th style="width:25%">检验</th><th style="width:38%">做法</th><th style="width:30%">回应的质疑</th></tr></thead>
+<tbody>
+<tr><td>R1</td><td>锚度量的替代</td><td>A1/A2/A3 三个分项分别单独入回归；再以三分项的 PCA 第一主成分作连续锚强度</td><td>"你的指数是不是拼凑出来的？"</td></tr>
+<tr><td>R2</td><td>被解释变量替代</td><td><code>CAR60</code>、首日换手率、上市后 20 日 Amihud 非流动性</td><td>"结论只在 20 日窗口成立？"</td></tr>
+<tr><td>R3</td><td>倾向得分匹配</td><td>按募资额、行业、上市年份、发行 PE 匹配"高锚（≥2）"与"低锚（≤1）"组，比较 ATT</td><td>"是不是规模差异造成的？"</td></tr>
+<tr><td>R4</td><td>样本分割</td><td>2019—2023 与 2024—2026 分样本；剔除 2026 年样本；剔除首发市值前 5%</td><td>"注册制前后不可比""被大票带的"</td></tr>
+<tr><td>R5</td><td>安慰剂</td><td>以上市后第 61—80 日 CAR 为被解释变量重跑（价格发现完成后，锚效应应当消失或显著减弱）</td><td>"会不会锚只是好公司代理变量？"</td></tr>
+</tbody></table>
+</div>
+
+<h4>案例回填（把实证与案例缝合起来的关键动作，独创性加分）</h4>
+<ol class="chain">
+<li>用全样本回归方程<strong>预测</strong>宇树与长鑫的 <code>UP1</code>、<code>CAR20</code>、<code>MDD60</code>，与实际值对比，计算残差。</li>
+<li>预期结果：长鑫落在模型预测区间内（<em>规律的常规实现</em>）；宇树的实际溢价显著高于预测值（<em>规律的极端演绎</em>）。</li>
+<li>把残差写成一句话："<strong>即便已经控制了行业、年份、发行规模与锚—容量二维，宇树的首日溢价仍高出模型预测约 X 个百分点——这正是双案例需要被逐笔解剖的理由：模型能告诉我们方向，解剖才能告诉我们过程。</strong>"</li>
+<li>散点图（图 3）中宇树、长鑫标红并标注残差方向，一图完成"从规律到个案"的叙事转场。</li>
+</ol>
+<div class="box tip"><span class="bt">为什么这一步值钱</span>
+去年获金奖的哪吒案例，强在"有模型有实证且落回案例本身"。纯回归会被问"那你还要案例干什么"，纯案例会被问"两只股票凭什么下结论"。<strong>残差回填同时回答了这两个问题</strong>：回归确立规律，残差定位案例在规律中的位置，案例解剖补上规律解释不了的过程。
+</div>
+
+<h3 id="s4-4">4.4 结果呈现、工作量与降级方案</h3>
+<div class="tw">
+<table>
+<thead><tr><th style="width:12%">表号</th><th style="width:30%">内容</th><th style="width:34%">规格</th><th style="width:24%">位置</th></tr></thead>
+<tbody>
+<tr><td>表 3</td><td>描述性统计与分组均值差</td><td>全样本均值/中位数/标准差；按 Anchor 高低分组的 UP1、CAR20、MDD60 均值差与 t 检验；附 <code>corr(StratRatio, lnFloat)</code> 渠道相关系数</td><td>第四部分层次一</td></tr>
+<tr><td>表 4</td><td>主回归结果</td><td>3 个被解释变量 × 3 个设定 = 9 列；系数、聚类稳健标准误、显著性星号、N、调整 R²、FE 标注</td><td>第四部分层次一末</td></tr>
+<tr><td>表 5</td><td>稳健性汇总</td><td>R1—R5 各一行，只报核心系数与显著性（节省篇幅）</td><td>正文或附录（视附录规则）</td></tr>
+<tr><td>表 6</td><td>案例回填表</td><td>宇树/长鑫的实际值、预测值、残差</td><td>第四部分层次一与层次二之间的过渡处</td></tr>
+</tbody></table>
+</div>
+<div class="box warn"><span class="bt">降级方案（时间紧时的保底，但横截面部分不可整体删除）</span>
+最低限度保留：<strong>散点图（图 3）+ 分组均值差 t 检验（表 3）+ 相关系数矩阵</strong>，约 30 行代码、半天可出。横截面是"个案还是系统缺陷"的唯一回答，承担方法 30 分与工作量 20 分的双重功能。<br/>
+若回归结果<strong>不显著</strong>：如实写入正文与局限段（"锚强度的度量误差与样本期制度变迁可能削弱统计功效"），并把双案例退为"启发性证据"。<em>诚实是方法分的正资产，掩盖是负资产。</em>
+</div>
+</section>
+
+<!-- ========================= 5 ========================= -->
+<section class="card" id="s5">
+<h2><span class="no">5</span>五段式章节执行细则（正文 ≤ 15000 字，目标 1.35—1.45 万）</h2>
+
+<h3>第一部分　绪论（约 2000 字，学生 C 执笔）</h3>
+<ul>
+<li><strong>段 1　制度背景（约 450 字）</strong>：时间线写法——2019 年科创板设立并引入第五套标准与战略配售制度 → 2024—2026 年注册制走深走实、科创板"1+6"改革 → 2026 年 6 月《发行上市审核规则适用指引第 10 号》把第五套标准扩围至 AI 企业。末句转折："上市的门槛在放宽，<strong>但给这些企业定价的工具箱并没有同步更新</strong>。"</li>
+<li><strong>段 2　现象与问题（约 300 字）</strong>：宇树数据三连（史上最强战配名单、0.018% 历史最低中签率、一月腰斩逾五成）；长鑫一句对照（同样高倍首日涨幅，此后稳步上行）。提出问题。</li>
+<li><strong>段 3　问题陈述（约 250 字，显性必写）</strong>："当一家公司没有盈利、没有可比公司、没有机构覆盖时，市场用什么给它定价？<strong>定价锚的缺位会以多大的代价被市场自行填补？制度能否为锚的形成提供公共品？</strong>"+ 三个子问题（分别对应锚、容量、二者交互）。</li>
+<li><strong>段 4　文献与框架（约 700 字）</strong>：维度 1—7 各一句 → 文献缺口（见第 3 节标准表述）→ 机制链条（图 1）→ 定价模型与三命题的操作化定义 → 研究设计（<em>典型性双案例对照 + 理论模型推导 + 全样本横截面检验 + 案例残差回填</em>；<strong>禁写"准自然实验""唯一差异"</strong>）→ 结构安排一句话。</li>
+</ul>
+
+<h3>第二部分　案例介绍（约 3000 字，学生 A 执笔）</h3>
+<p><strong>写作铁律</strong>：两案按<strong>同一维度清单</strong>推进，维度顺序固定为"公司画像 → 发行与筹码结构 → 锚的三分项体检 → 上市后行情 → 基本面与估值 → 投资者损益"，便于表 1 逐行对照。</p>
+<div class="grid2">
+<div class="mini"><h5>宇树科技（主角，约 1800 字）</h5>
+① 公司画像：杭州、全球人形机器人出货领先、创始人特别表决权；<br/>
+② 发行与筹码结构：战配名单与锁定期矩阵、控股股东与员工平台锁定、<strong>流通盘 7.44% 的形成过程</strong>、独家保荐、无绿鞋；<br/>
+③ <strong>锚的三分项体检（本版新增小节，必须写）</strong>：A1 盈利锚——扣非口径的稳定性存疑；A2 可比锚——发行 PE 远高于行业均值且无同类上市公司；A3 覆盖锚——上市初期机构覆盖稀少、目标价与市价倒挂。三项合计 Anchor ≈ 0；<br/>
+④ 首月行情：首日开盘大幅高开、盘中冲高回落、次日大跌、一月腰斩；订单流证据（超大单净流入 vs 大单中单净流出、融资净买入）；<br/>
+⑤ 基本面与估值：营收高增但增速降档、扣非承压、研发费率低于行业、动态 PE 发散；<br/>
+⑥ 投资者损益（150 字，给温度）："中签获利"与"追高亏损"的对照。</div>
+<div class="mini"><h5>长鑫科技（对照，约 1000 字）</h5>
+开篇第一句点明身份：<em>"作为对照组，长鑫科技提供了'锚在场内'的另一种结构。"</em><br/>
+① 国资共治、无实际控制人；② 险资等长期资本以一级市场持股形式<strong>在上市前完成一次定价</strong>——这是锚的来源之一；③ <strong>真假 PE 揭示</strong>：高静态发行 PE 源于周期低谷，切换至次年预期利润后动态 PE 回落至个位数—十余倍，属"假高估"；④ 存储行业有全球可比公司与周期价格数据，A2 可比锚成立；⑤ 首日高换手、巨额成交完成筹码出清；⑥ 多家承销团 + 绿鞋 + 长期承诺。Anchor ≈ 2—3。</div>
+</div>
+<p><strong>表 1 双案例对照总表（学生 B 制）</strong>：行维度 = 锚三分项 / 发行 PE 与行业 PE / 动态 PE / 战配比例 / 加权锁定期 / 无限售流通股数与占比 / 网上中签率 / 网下申购倍数 / 承销模式与绿鞋 / 募资额 / 股权与表决权结构。每格右上角标 <span class="tag t-pub">公告</span> <span class="tag t-wind">Wind</span> <span class="tag t-calc">推算+公式</span> 三种口径。<strong>设计原则：评委只看这张表也能复述全文对照逻辑。</strong></p>
+
+<h3>第三部分　案例的价值（约 1500 字，学生 C 执笔）</h3>
+<ol>
+<li><strong>理论价值（600 字）</strong>：① 提出可度量的"锚强度"构念并给出二维框架；② 把战配锁定的既有讨论收编为容量渠道，形成与文献的对话而非重复；③ 三个命题均可检验，横截面部分给出初步证据。</li>
+<li><strong>实践价值（500 字）</strong>：发行人（锚的自建与披露）、承销机构（无锚资产的报价责任）、机构投资者（识别"无锚 × 小容量"象限的结构性风险）、中小投资者（打新收益与接盘风险的对称性）。</li>
+<li><strong>政策价值（400 字）</strong>：科技金融大文章 + 耐心资本制度建设 + 第五套标准扩容后大型未盈利 IPO 接踵而至 + <strong>杭州 AI 企业上市潮</strong>（含正在辅导备案的未盈利 AI 企业，一律标"截至交稿日、媒体报道口径、以辅导备案挂网为准"）——制度补丁具有窗口期紧迫性。</li>
+</ol>
+
+<h3>第四部分　问题与原因分析（约 4000 字，重心；A 主笔、B 补数据、C 润色）</h3>
+<p><strong>结构原则</strong>：三层递进，每层只干一件事；段内固定"机理 → 证据"两步；证据一律先宇树后长鑫同框对照；每层末最多一张 3—5 行小表，不重复表 1。</p>
+
+<h4>层次一　现象与规律：这不是两只股票的故事（约 1300 字）</h4>
+<ul>
+<li>（一）镜像现象总览（约 350 字）：双案例一段带过（数据细节不重复案例介绍），加一句<strong>影子案例</strong>——低发行 PE、有稳定盈利的主板装备龙头，在高战配 + 低流通盘结构下同样出现极端行情并被交易所实施异常交易监管，说明<strong>现象与发行定价高低无关、与板块无关</strong>。</li>
+<li>（二）<strong>横截面证据（约 950 字）</strong>：按第 4 节执行——描述统计与分组均值差（表 3）→ 散点图（图 3）→ 主回归（表 4）→ 边际效应图（图 5）→ 稳健性一段（表 5）→ <strong>案例残差回填（表 6）</strong>。渠道连接句必写："战配比例与首日流通市值的相关系数为 −0.XX，说明<strong>抽离容量的主要制度渠道正是战略配售与网下限售</strong>。"</li>
+<li>层末过渡句："六年数百只新股呈现的规律，宇树与长鑫只是把它演到了两个极端——<strong>而残差告诉我们，规律之外还有约 X 个百分点需要过程证据来解释。</strong>"</li>
+</ul>
+
+<h4>层次二　机理拆解（约 2200 字，四问，每问"点题句 → 机理 → 证据 → 回扣"）</h4>
+<ol>
+<li><strong>（一）锚缺位：机构为什么集体沉默（约 700 字，本节最重）</strong><br/>
+点题句：没有锚，不是机构不想定价，是<strong>无法在职业约束下给出一个能被复核的价格</strong>。<br/>
+机理：估值误差方差随锚强度下降 → 机构需求曲线趋于平坦 → 定价权份额 <var>θ</var> 上升（命题 1）。<br/>
+证据：① 宇树锚三分项全空 + 上市初期机构覆盖稀少、目标价显著低于市价（<strong>目标价倒挂</strong>）；② <strong>反向隐含推演</strong>——由开盘价反推所隐含的远期净利润与复合增速，说明该价格对应的业绩要求超出行业现有龙头的盈利水平；③ PEG 远超常用阈值；④ 访谈嵌入（券商人士："对没有可比对象的资产，我们内部报价流程走不通"）。<br/>
+回扣：<em>锚缺位不是估值技术问题，是定价权归属问题。</em></li>
+<li><strong>（二）容量抽干：定价需要场地（约 500 字）</strong><br/>
+点题句：45 亿量级的流通容量，迎接的是数千亿量级的打新资金。<br/>
+机理：命题 2 + 流动性溢价文献；战配锁定 → 背书权在手、交易功能归零 → <strong>定价权—背书权分离</strong>（本版在此命名，作为容量渠道的制度解释）。<br/>
+证据：拥挤度测算、中签率与流通市值的双案例倍差、横截面渠道相关系数。<br/>
+回扣：<em>容量决定了偏离能被推到多远。</em></li>
+<li><strong>（三）交互放大：无锚 × 小容量的乘数（约 500 字）</strong><br/>
+点题句：单独的小容量并不可怕，可怕的是小容量遇上没有锚。<br/>
+机理：命题 3；<strong>此节是本文相对既有"战配批判"文献的核心增量</strong>。<br/>
+证据：边际效应图（图 5）+ 象限图（图 2）+ 有锚小容量的反例个股（正文举 1—2 只有盈利、有可比公司但流通盘同样很小、而首月表现平稳的科创板个股）。<br/>
+回扣：<em>制度该修的不是容量一个旋钮，而是锚与容量的匹配关系。</em></li>
+<li><strong>（四）镜像反证：锚在场内，价格一天完成发现（约 500 字）</strong><br/>
+点题句：同样的长期资本，在一级市场定过价和在锁定名单里，结果完全不同。<br/>
+证据：长鑫"真假 PE"揭示 + 一级市场定价过程 + 首日高换手完成出清 + 绿鞋与长期承诺；<strong>图 4 双瀑布图</strong>（宇树：价值 → +叙事 → +稀缺，逐级脱离可计算区间；长鑫：盈利 × 倍数可计算）。<br/>
+回扣：<em>差别不在倍数高低，在锚的有无——这恰好从反面验证了前三问。</em></li>
+</ol>
+
+<h4>层次三　根源与诊断（约 500 字）</h4>
+<ul>
+<li><strong>根源命名</strong>：科创板已建立"谁能上市"的准入制度与"谁来背书"的配售制度，<strong>尚未建立"如何算清"的定价锚制度</strong>——锚的生产被完全交给市场自发行为，而在最需要锚的未盈利、无可比公司场景中，市场自发供给恰恰最少（公共品供给不足）。</li>
+<li><strong>竞争性解释的排除（各一句数据）</strong>：市场环境反证（上市当日大盘与科创 50 下跌，个股逆势暴涨，属孤立的结构性事件）；发行定价反证（券商目标价区间显示<strong>发行价并不贵，贵的是二级市场溢价</strong>）；行业反证（回归控制行业 FE，且主板影子案例同象限复制）；业绩反证（长鑫处周期低谷却更稳）。</li>
+<li><strong>四处断裂清单</strong>（与第五部分建议一一编号对应）：① <strong>锚的披露断裂</strong>（远期叙事无可检验的披露约束）；② <strong>锚的供给断裂</strong>（无锚资产无人校准、机构集体沉默）；③ <strong>锚—容量匹配断裂</strong>（战配比例、锁定期与流通容量三者无底线约束）；④ <strong>缓冲断裂</strong>（无绿鞋、无稳定盘、解禁无流量调节，纠偏只能靠暴跌完成）。</li>
+<li>过渡句：四处断裂都是<strong>机制设计问题而非市场道德问题</strong>——"与其抑制炒新，不如为价格提供锚。"</li>
+</ul>
+
+<h3>第五部分　建议：新股定价锚制度三支柱（约 2000 字，C 执笔 A 审）</h3>
+<div class="tw">
+<table>
+<thead><tr><th style="width:14%">支柱</th><th style="width:30%">方案</th><th style="width:28%">操作细节</th><th style="width:16%">回应断点</th><th style="width:12%">实施层级</th></tr></thead>
+<tbody>
+<tr><td><strong>一　锚的披露</strong></td><td><strong>隐含业绩披露制度</strong>：以非传统估值指标定价的发行人，须在发行文件中披露"发行价所隐含的未来收入/利润要求"及其关键假设</td><td>把本文的反向隐含推演从研究工具变成发行要求；给出敏感性区间（保守/中性/乐观三档）与达成路径</td><td>断点 ①</td><td>交易所业务指引</td></tr>
+<tr><td><strong>二　锚的供给</strong></td><td><strong>保荐机构锚定分析报告 + 研究覆盖前置</strong>：保荐机构须出具可比公司、订单/产能、单位经济性的量化对照；鼓励上市前研究覆盖与投价报告口径公开可核</td><td>可比公司选择标准与剔除理由须说明；无可比公司时须披露替代锚（订单簿、产能爬坡、单机价格曲线）</td><td>断点 ②</td><td>承销业务规范 / 行业自律</td></tr>
+<tr><td><strong>三　锚—容量匹配</strong></td><td><strong>"锚—容量匹配底线"</strong>：当锚强度低（未盈利且无可比上市公司）时，收紧战配上限、提高初始流通容量下限，并强制设置绿鞋</td><td>量化示例：流通市值／有效申购资金 ≥ 1%；锚强度低的发行人战配比例上限由 20% 降至 12%；解禁流量调节（单月解禁市值超流通市值 50% 者分 3—6 个月释放）</td><td>断点 ③④</td><td>发行承销业务指引</td></tr>
+</tbody></table>
+</div>
+<div class="box key"><span class="bt">规则锚（证明建议不是空中楼阁）</span>
+上交所科创板发行承销业务指引已原则性要求"合理确定战略投资者家数和比例，<strong>保障股票上市后必要的流动性</strong>"。本文支柱三是把该原则性条款<strong>量化为可执行标准</strong>，并把判定条件与"锚强度"挂钩——落地基础现成，属参数化细化而非新设规则。
+</div>
+<ul>
+<li><strong>分主体配套（约 400 字）</strong>：发行人（锚的自建三原则）／承销与询价（报价问责、"四数孰低"约束的渐进放松方向）／监管（全周期价格发现治理、解禁预披露）／投资者（理解打新收益与接盘风险的对称性）。</li>
+<li><strong>实施优先级与成本收益（约 300 字）</strong>：短期 = 发行人与保荐机构自律（零监管成本、可立即实施）；中期 = 承销机制与自律规则；长期 = 业务指引修订（治本）。一句话："<strong>短期靠自律、中期靠机制、长期靠规则。</strong>"</li>
+<li><strong>收束段（约 150 字）</strong>：面向未盈利科技巨头上市潮的制度准备；紧迫性证据——监管已对同类个股实施异常交易监管，<strong>制度补丁的窗口期就是现在</strong>。</li>
+</ul>
+
+<h3>结语（约 300 字）</h3>
+<p>回扣开场："同样的四百多个点，不同的结局。"金句备选："<strong>给硬科技最好的支持，不只是让它上得来，更是让市场算得清。</strong>""价格发现的成本最终由谁承担——这是注册制下半场必须回答的问题。"</p>
+<p><strong>参考文献 20—25 条</strong>：经典英文 6—8 条（维度 1—5）+ 中文核心近五年 5—6 条（维度 4、6、7）+ 政策文件 3 条 + 公告 2 条 + 新闻 4—5 条（数据出处）。</p>
+</section>
+
+<!-- ========================= 6 ========================= -->
+<section class="card" id="s6">
+<h2><span class="no">6</span>图表制作细则</h2>
+<div class="tw">
+<table>
+<thead><tr><th style="width:20%">图表</th><th style="width:14%">位置</th><th style="width:38%">数据与公式</th><th style="width:14%">工具</th><th style="width:8%">负责</th></tr></thead>
+<tbody>
+<tr><td>图 1　锚—容量机制链条</td><td>绪论</td><td>手工绘制，四环节，线条简洁</td><td>PPT / Visio</td><td>C</td></tr>
+<tr><td>图 2　锚—容量象限定位图 <span class="tag t-new">新增</span></td><td>案例介绍末</td><td>横轴 lnFloat、纵轴 Anchor；双案例 + 影子样本定位</td><td>Excel / Python</td><td>A</td></tr>
+<tr><td>图 3　横截面散点图</td><td>四·层次一</td><td>横轴 ln(首日流通市值)，纵轴 UP1 或 CAR20；<strong>按 Anchor 高低分两种颜色</strong>，双案例标红，拟合两条回归线</td><td>Python</td><td>A</td></tr>
+<tr><td>图 4　三情景价格带 × 价格路径（估值解剖）</td><td>四·层次二（四）</td><td>宇树每日收盘价曲线叠加保守/中性/乐观三条情景价格带；右侧长鑫对照短柱</td><td>Excel</td><td>A</td></tr>
+<tr><td>图 5　交互项边际效应图 <span class="tag t-new">新增</span></td><td>四·层次二（三）</td><td>Anchor = 0 与 3 时 lnFloat 的边际效应及 95% 置信带</td><td>Python / Stata</td><td>A</td></tr>
+<tr><td>表 1　双案例对照总表</td><td>案例介绍末</td><td>含锚三分项行；三口径标注</td><td>Word</td><td>B</td></tr>
+<tr><td>表 2　价格发现效率量化表</td><td>四·层次二末</td><td>T*、偏离深度、拥挤度、目标价／市价比值</td><td>Word</td><td>A</td></tr>
+<tr><td>表 3—6　实证四表</td><td>四·层次一</td><td>见 4.4 节规格</td><td>Stata / Python 输出</td><td>A</td></tr>
+</tbody></table>
+</div>
+</section>
+
+<!-- ========================= 7 ========================= -->
+<section class="card" id="s7">
+<h2><span class="no">7</span>分工与数据核验任务单</h2>
+<div class="tw">
+<table>
+<thead><tr><th style="width:14%">成员</th><th style="width:46%">负责板块</th><th style="width:40%">核心产出</th></tr></thead>
+<tbody>
+<tr><td><strong>A（交易与计量）</strong></td><td>第二部分全部；第四部分主笔（含回归、情景估值、隐含业绩反推）；第五部分机制条款审核；答辩市场类问题</td><td>图 2—5、表 2—6、Wind 底稿、估值推导手册、回归代码与日志</td></tr>
+<tr><td><strong>B（数据工程）</strong></td><td>全部数据导出与口径核对；表 1；核验任务单执行；数据更新日志；文献卡片表整理</td><td>横截面数据集（含变量字典）+ 表 1 + 证据链底稿</td></tr>
+<tr><td><strong>C（文本与调研）</strong></td><td>第一、三、五部分执笔；券商访谈（约访/提纲/纪要/嵌入正文）；查重改写；答辩讲稿与 PPT</td><td>初稿 + 访谈纪要 + 讲稿 + PPT</td></tr>
+</tbody></table>
+</div>
+<div class="box warn"><span class="bt">铁律</span>文本里的每个数字、每张表，必须有一个成员能当着评委的面独立推导。尤其是 <code>Anchor</code> 指数的三个分项判定与交互项的边际效应含义。</div>
+
+<h4>数据核验任务单（先核后用，全部进底稿）</h4>
+<div class="tw">
+<table>
+<thead><tr><th style="width:8%">优先级</th><th style="width:52%">任务</th><th style="width:22%">来源</th><th style="width:18%">负责</th></tr></thead>
+<tbody>
+<tr><td rowspan="4">第一</td><td>两案日行情序列（上市至数据截止日）：日期/开/收/高/低/成交额/换手率/总市值/流通市值</td><td>Wind WSD</td><td>A</td></tr>
+<tr><td>两案《发行结果公告》《上市公告书》PDF——战配名单、锁定期矩阵、流通盘结构官方口径</td><td>交易所官网</td><td>B</td></tr>
+<tr><td><strong>锚三分项的双案例判定底稿</strong>（A1 财务口径、A2 行业 PE 出处、A3 覆盖机构数截图）</td><td>招股书 + 风险特别公告 + Wind</td><td>B</td></tr>
+<tr><td>长鑫发行 PE 的两个口径辨析（扣非后发行后口径 vs 媒体口径）——<strong>直接影响"真假 PE"高潮段，以发行公告为唯一定稿依据</strong></td><td>发行公告</td><td>B</td></tr>
+<tr><td rowspan="3">第二</td><td>2019—2026 科创板新股横截面数据集（全部变量，见 4.1 表与附录 A）</td><td>Wind 新股专题 + WSS/WSD</td><td>B 导 A 跑</td></tr>
+<tr><td>宇树上市首月龙虎榜与订单流明细、两融余额日序列</td><td>交易所 / Wind</td><td>A</td></tr>
+<tr><td>券商研报原文（目标价、盈利预测、估值方法），用于目标价倒挂与 A3 判定</td><td>Wind 研报库 / 慧博</td><td>A</td></tr>
+<tr><td rowspan="2">第三</td><td>券商一手访谈 1 场（首选长鑫 Pre-IPO 投资方机构人士）：机制与定价流程，不问褒贬</td><td>约访</td><td>C</td></tr>
+<tr><td>在辅导备案的未盈利 AI 企业信息，一律"截至交稿日 + 媒体报道口径"，以证监局辅导备案挂网为最终时间锚</td><td>浙江证监局官网</td><td>C</td></tr>
+</tbody></table>
+</div>
+<div class="box warn"><span class="bt">冲突待核清单（沿用并更新）</span>
+① 长鑫险资"23.85 亿元认缴"与"23.85 亿股持股"疑为两个口径（IPO 战配认缴额 vs Pre-IPO 老股），须对照公告分清后再写"锚在场内"的论证；② 长鑫发行 PE 两个口径；③ 网下／网上申购倍数须标明口径；④ 影子案例（主板）全部数据需上市公告书 + 交易所监管公告双源核验；⑤ 未盈利 AI 企业的估值/营收口径一律取最保守值。
+</div>
+</section>
+
+<!-- ========================= 8 ========================= -->
+<section class="card" id="s8">
+<h2><span class="no">8</span>工作量证据链（对应评审"工作量 20 分"）</h2>
+<ol>
+<li>Wind 导出底稿（原始 Excel，含导出时间戳）与<strong>变量字典</strong>（变量名、定义、字段、口径、缺失处理）</li>
+<li><strong>实证代码与完整输出日志</strong>（含不显著结果，如实保留——见附录 B）</li>
+<li>一手访谈记录 1 场（时间/对象/纪要；具名与否以对方同意为准）</li>
+<li>券商研报原文摘录页（目标价与估值方法）</li>
+<li>文献卡片表 15—20 张</li>
+<li>数据更新日志（交稿前最后一次行情更新记录，正文标注数据截止日）</li>
+</ol>
+<p><strong>关键操作</strong>：先查比赛规则是否允许附录。允许 → 附录放变量字典、回归完整输出、访谈纪要摘要；不允许 → 把痕迹匿名化写进正文（如机理（一）中的访谈句），并在方法段用一句话说明底稿可备查。</p>
+</section>
+
+<!-- ========================= 9 ========================= -->
+<section class="card" id="s9">
+<h2><span class="no">9</span>答辩预案</h2>
+<p><strong>官方结构（附件2）</strong>：汇报展示 50%（全面性、逻辑性、<strong>重点突出性</strong>）+ 答辩展示 50%（清晰度、准确度、<strong>适当度、沉稳度</strong>）。</p>
+<div class="grid2">
+<div class="mini"><h5>汇报设计（前 50%）</h5>
+5 分钟讲稿："开场一句话 → 锚—容量框架一张图 → 模型一条公式 → 回归一张边际效应图 → 案例残差一句话 → 三支柱建议 → 金句收尾"。<br/>
+PPT ≤ 12 页：1 标题 + 1 框架图 + 1 模型 + 2 案例对照 + 2 实证（主表 + 边际效应图）+ 1 残差回填 + 2 建议 + 1 结语 + 1 尾页。<br/><strong>重点突出性靠"每页一个数字"实现。</strong></div>
+<div class="mini"><h5>沉稳度训练（后 50%）</h5>
+答不上来的标准动作："这个问题我们讨论过，目前的证据是 X，但 Y 部分确实没有验证，这是我们下一步要补的。"——<strong>承认局限优于强行狡辩</strong>。<br/>被质疑时不打断、听完再答、先结论后展开。<br/>三轮演练：完整讲 → 随机抽问打断 → 模拟刁难（指导教师扮演）。</div>
+</div>
+<h4>高危提问 Top 12（本版按新主线重写）</h4>
+<div class="tw">
+<table>
+<thead><tr><th style="width:4%">#</th><th style="width:38%">提问</th><th style="width:58%">标准回答要点</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>"锚强度指数是你们自己造的，凭什么？"</td><td>三分项分别对应估值实践中最常用的三类参照系（盈利、可比倍数、卖方覆盖），均有文献支撑（Kim &amp; Ritter, Purnanandam &amp; Swaminathan, Trueman et al.）；稳健性 R1 已做分项回归与 PCA 连续版，结论一致。</td></tr>
+<tr><td>2</td><td>"锚是不是就是'好公司'的代理变量？"</td><td>① 控制了发行规模、发行 PE、行业与年份 FE；② 安慰剂检验 R5 显示锚效应在价格发现完成后消失——若锚只是质量代理，后期差异应持续；③ 长鑫处于行业周期低谷、当期盈利并不亮眼，却是高锚样本，正说明锚 ≠ 业绩好。</td></tr>
+<tr><td>3</td><td>"战配比例、中签率和流通市值明显相关，回归不共线吗？"</td><td>刻意设计：主回归只放锚与容量两个变量，战配与中签率仅作描述统计与渠道证据；共线在设定阶段即被排除——这正体现方法自觉性。</td></tr>
+<tr><td>4</td><td>"交互项什么意思？能不能说人话？"</td><td>"流通盘小不小，只对没有锚的股票要命。有锚的股票，流通盘小也不会离谱。"配图 5 两条斜率。</td></tr>
+<tr><td>5</td><td>"长鑫的险资不也锁定吗？凭什么说锚在场内？"</td><td>"在场"的标准是<strong>是否参与过价格形成</strong>，不是股份能否交易：一级市场已完成一次定价、行业有全球可比公司与周期价格数据、发行后动态 PE 可计算。</td></tr>
+<tr><td>6</td><td>"宇树暴跌为什么不直接说它定价失败？"</td><td>价格发现最终完成了，但成本高昂（纠偏成本 MDD60）。<strong>机制缺陷体现在成本，而非结果本身。</strong></td></tr>
+<tr><td>7</td><td>"你们做了因果识别吗？"</td><td>明确不主张因果，主张条件相关 + 三重一致性（符号一致、过程证据一致、稳健性未推翻）。</td></tr>
+<tr><td>8</td><td>"两只股票凭什么下结论？"</td><td>回归确立规律、残差定位案例、案例解剖补齐过程——请看表 6。</td></tr>
+<tr><td>9</td><td>"这和金融创新大赛有什么关系？"</td><td>建议本身就是一项发行制度创新（隐含业绩披露 + 锚定分析 + 锚—容量匹配），且落在现有业务指引的参数化接口上。</td></tr>
+<tr><td>10</td><td>"隐含业绩披露会不会等于强制盈利预测？"</td><td>不是预测，是<strong>价格的翻译</strong>：披露"当前发行价对应的业绩要求"及假设与敏感性，责任落在假设透明度而非结果准确性；可设免责表述与区间披露。</td></tr>
+<tr><td>11</td><td>"降低战配上限会不会削弱耐心资本引入？"</td><td>只在低锚情形收紧，并以绿鞋与解禁流量调节对冲；耐心资本的引入手段不止锁定一条（一级市场持股、长周期考核账户在场式参与）。</td></tr>
+<tr><td>12</td><td>"访谈对象有利益关系吗？"</td><td>① 只问机制与流程，不问褒贬；② 仅用于印证机制链条，核心结论均有多源数据交叉验证；③ 如实披露身份与关系，是资料严谨性的体现。</td></tr>
+</tbody></table>
+</div>
+<p><strong>亮点数据（须有人能现场复算）</strong>：Anchor 三分项判定；交互项边际效应在 Anchor=0 与 3 时的差异；偏离深度（峰值市值 ÷ 券商合理市值上限）；中签率倍差；拥挤度（有效申购资金 ÷ 首日流通市值）；"同为数百倍发行 PE、动态 PE 却相差数十倍"。</p>
+</section>
+
+<!-- ========================= 10 ========================= -->
+<section class="card" id="s10">
+<h2><span class="no">10</span>格式与合规底线</h2>
+<div class="grid2">
+<div class="mini"><h5>格式硬指标（照排即可）</h5>
+标题黑体三号；摘要 + 关键词宋体小四，<strong>摘要 ≤ 500 字</strong>；正文宋体小四、行距 20 磅；标题层级 一、→（一）→ 1. →（1），标题加粗；页眉"2026年第十一届浙江省大学生金融创新大赛作品"宋体五号居中；页边距上下左右 2.5cm，A4 纵向，页码页面底端外侧；<strong>注释用尾注</strong>（非脚注），自定义标记 [1][2][3]；参考文献按附件 3 范例（[J][M][D][N][EB/OL]），<strong>先中文后英文，中文按拼音排序、英文按字母排序</strong>；B 类正文 ≤ 15000 字。</div>
+<div class="mini"><h5>内容红线</h5>
+全文匿名（校名/师生姓名/队名清零，正文提及专家中性化）；查重 &lt; 30%（媒体原句全部改写，框架表述用自己的话重写）；五段式结构完整（绪论/案例介绍/案例价值/问题与原因分析/建议）；行情数据更新至交稿前最近交易日并在文中标注数据截止日；<strong>实证结果表须与代码输出一致，不得手工修饰</strong>。</div>
+</div>
+<div class="box warn"><span class="bt">摘要 500 字模板（v5 版主线，先写后删）</span>
+背景一句 → 问题一句（锚缺位如何被市场以高成本填补）→ 方法一句（双案例对照 + 定价模型 + 2019—2026 科创板全样本横截面检验）→ 发现三句（H1/H2/H3 各一句，含关键系数方向）→ 建议一句（定价锚制度三支柱）→ 贡献一句。关键词 4—5 个：科创板；新股定价；定价锚；流通容量；战略配售。
+</div>
+</section>
+
+<!-- ========================= 11 ========================= -->
+<section class="card" id="s11">
+<h2><span class="no">11</span>四周执行节奏</h2>
+<div class="tw">
+<table>
+<thead><tr><th style="width:10%">阶段</th><th style="width:52%">动作</th><th style="width:38%">交付物（缺一不可进入下一阶段）</th></tr></thead>
+<tbody>
+<tr><td>第 1 周</td><td>分工与术语表发全员；启动核验任务单第一优先级；文献维度 1—7 检索（<strong>维度 2 优先</strong>）；查比赛附录规则；<strong>锚三分项判定标准定稿</strong></td><td>文献卡片表初版 + 锚指数判定手册 + 双案例公告底稿</td></tr>
+<tr><td>第 2 周</td><td>横截面数据集导出与清洗；<strong>主回归 + 五项稳健性跑完（含不显著记录）</strong>；案例残差回填；访谈 1 场；图 2/3/5 初版</td><td>数据集 + 变量字典 + 表 3—6 + 回归日志 + 访谈纪要</td></tr>
+<tr><td>第 3 周</td><td>按第 5 节写正文初稿（数据位留空待填）；表 1、图 4 定稿；查重改写第一轮</td><td>正文初稿全篇 + 图表全套</td></tr>
+<tr><td>第 4 周</td><td>数据最终更新至最近交易日；<strong>摘要压至 500 字 + 全套格式排版</strong>（页眉/尾注/文献排序）；匿名扫描；三轮答辩演练</td><td>定稿 + PPT + 讲稿 + 演练记录</td></tr>
+</tbody></table>
+</div>
+</section>
+
+<!-- ========================= 附录A ========================= -->
+<section class="card" id="a1">
+<h2><span class="no">A</span>附录 A · Wind 取数字段速查</h2>
+<p>以下为最小可行取数方案：一次 <code>WSET</code> 拉新股名单与发行信息，一次 <code>WSS</code> 补财务与覆盖度，一次 <code>WSD</code> 拉行情序列。<strong>全部字段均为 Wind 金融终端标准接口可得，无需外部数据。</strong></p>
+<div class="tw">
+<table>
+<thead><tr><th style="width:18%">接口</th><th style="width:44%">用途与关键字段</th><th style="width:38%">备注</th></tr></thead>
+<tbody>
+<tr><td><code>WSET("ipo", ...)</code></td><td>新股名单与发行信息：证券代码、上市日期、发行价、发行市盈率（摊薄）、募资总额、网上中签率、网下申购倍数、主承销商、所属行业</td><td>板块筛选"科创板"；日期区间 2019-07-22 至数据截止日</td></tr>
+<tr><td><code>WSS(codes, fields, tradeDate=...)</code></td><td>首日无限售流通市值 <code>mkt_freeshares</code>、流通股本 <code>float_a_shares</code>、一致预测覆盖机构数 <code>west_instnum</code>、目标价 <code>west_avgtargetprice</code></td><td>tradeDate 分别取首日、上市后第 30 日</td></tr>
+<tr><td><code>WSS(codes, "np_belongto_parcomsh,deductedprofit", rptDate=...)</code></td><td>上市前一完整会计年度归母净利润与扣非净利润 → 判定 A1</td><td>与招股书财务章节交叉核对</td></tr>
+<tr><td><code>WSD(codes, "open,high,low,close,amt,turn,mkt_cap_ard", startDate, endDate)</code></td><td>上市后 80 个交易日行情序列 → 计算 UP1、CAR20、CAR60、MDD60、换手率、Amihud</td><td>同时取 <code>000688.SH</code> 作为基准</td></tr>
+<tr><td>行业 PE</td><td>发行人《投资风险特别公告》披露的"所属行业最近一个月平均静态市盈率"（中证指数口径）→ 判定 A2</td><td><strong>务必用公告值而非终端实时值</strong>，保证与发行时点一致</td></tr>
+<tr><td>战配与锁定</td><td>《发行结果公告》战略配售股数、获配对象、各档锁定期 → StratRatio、LockMonths</td><td>仅作描述统计；大样本可只取近三年或分层抽样 100 只手工录入</td></tr>
+</tbody></table>
+</div>
+<div class="box tip"><span class="bt">取数省力提示</span>
+<code>StratRatio</code> 与 <code>LockMonths</code> 需逐份公告录入，工作量大且<strong>不进回归</strong>。建议策略：全样本只取 Wind 已有的"战略配售股数/比例"字段（若缺失则留空），<strong>手工精录仅限近三年 + 双案例 + 影子案例</strong>，在正文中如实说明手工录入范围。这既控制工作量，又保住渠道证据的可信度。
+</div>
+</section>
+
+<!-- ========================= 附录B ========================= -->
+<section class="card" id="a2">
+<h2><span class="no">B</span>附录 B · 实证代码骨架（Python，可直接扩写）</h2>
+<pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># 科创板新股定价锚横截面检验 —— 主回归骨架</span>
+<span class="k">import</span> pandas <span class="k">as</span> pd, numpy <span class="k">as</span> np, statsmodels.formula.api <span class="k">as</span> smf
+
+df = pd.read_excel(<span class="s">"star_ipo_panel.xlsx"</span>)        <span class="c"># Wind 导出后清洗好的横截面</span>
+
+<span class="c"># ---- 1. 锚强度指数（三分项）----</span>
+df[<span class="s">"A1"</span>] = ((df.np_parent_pre &gt; 0) &amp; (df.ded_profit_pre &gt; 0)).astype(int)
+df[<span class="s">"A2"</span>] = ((df.ipo_pe &gt; 0) &amp; (df.ipo_pe / df.ind_pe &lt;= 2)).astype(int)
+df[<span class="s">"A3"</span>] = (df.west_instnum_30d &gt;= 3).astype(int)
+df[<span class="s">"Anchor"</span>] = df[[<span class="s">"A1"</span>, <span class="s">"A2"</span>, <span class="s">"A3"</span>]].sum(axis=1)
+
+<span class="c"># ---- 2. 被解释变量 ----</span>
+df[<span class="s">"UP1"</span>]   = df.close_d1 / df.ipo_price - 1
+df[<span class="s">"CAR20"</span>] = (df.close_d21 / df.close_d1 - 1) - (df.idx_d21 / df.idx_d1 - 1)
+<span class="c"># MDD60 由日行情序列另行计算：max((peak - trough_after_peak) / peak) over 60 日</span>
+
+<span class="c"># ---- 3. 容量、控制与去中心化交互 ----</span>
+df[<span class="s">"lnFloat"</span>] = np.log(df.float_mktcap_d1)
+df[<span class="s">"lnSize"</span>]  = np.log(df.ipo_amount)
+df[<span class="s">"lnPE"</span>]    = np.log1p(df.ipo_pe.clip(lower=0))
+df[<span class="s">"A_c"</span>]     = df.Anchor  - df.Anchor.mean()
+df[<span class="s">"F_c"</span>]     = df.lnFloat - df.lnFloat.mean()
+df[<span class="s">"AxF"</span>]     = df.A_c * df.F_c
+
+<span class="c"># ---- 4. winsorize 1% / 99% ----</span>
+<span class="k">for</span> v <span class="k">in</span> [<span class="s">"UP1"</span>, <span class="s">"CAR20"</span>, <span class="s">"MDD60"</span>, <span class="s">"lnFloat"</span>, <span class="s">"lnSize"</span>, <span class="s">"lnPE"</span>]:
+    lo, hi = df[v].quantile([.01, .99]); df[v] = df[v].clip(lo, hi)
+
+<span class="c"># ---- 5. 主回归：三个被解释变量 × 三个设定，行业聚类稳健标准误 ----</span>
+base = <span class="s">"A_c + F_c"</span>
+ctrl = base + <span class="s">" + lnSize + lnPE + uw_rep + greenshoe + mktret20 + C(year) + C(ind_sw2)"</span>
+full = ctrl + <span class="s">" + AxF"</span>
+
+<span class="k">for</span> y <span class="k">in</span> [<span class="s">"UP1"</span>, <span class="s">"CAR20"</span>, <span class="s">"MDD60"</span>]:
+    <span class="k">for</span> rhs <span class="k">in</span> [base + <span class="s">" + C(year) + C(ind_sw2)"</span>, ctrl, full]:
+        m = smf.ols(f<span class="s">"{y} ~ {rhs}"</span>, data=df).fit(
+                cov_type=<span class="s">"cluster"</span>, cov_kwds={<span class="s">"groups"</span>: df.ind_sw2})
+        <span class="k">print</span>(y, m.params[[<span class="s">"A_c"</span>, <span class="s">"F_c"</span>]].round(4), m.nobs, m.rsquared_adj.round(3))
+
+<span class="c"># ---- 6. 交互项边际效应（图 5）：dY/dlnFloat = b_F + b_AxF * (Anchor - mean) ----</span>
+<span class="c"># ---- 7. 案例回填：对宇树、长鑫用 m.predict() 求预测值与残差（表 6）----</span>
+</pre>
+<p style="color:var(--ink-3);font-size:14.5px">Stata 等价写法：<code>reghdfe UP1 A_c F_c AxF lnSize lnPE uw_rep greenshoe mktret20, absorb(year ind_sw2) vce(cluster ind_sw2)</code>，配合 <code>margins, dydx(F_c) at(Anchor=(0 3))</code> 与 <code>marginsplot</code> 出图 5。</p>
+</section>
+
+<footer class="end">
+2026 年第十一届浙江省大学生金融创新大赛 · B 类案例分析 · 《从宇树、长鑫双案例看科创板新股定价锚制度》框架定稿 v5<br/>
+本文档为写作与分工的直接依据；所有数据在写入正文前须经第 7 节核验任务单核对，并在正文标注数据截止日。
+</footer>
+</main>
+</div>
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a[href^="#"]'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var pos = window.scrollY + 120, cur = 0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop <= pos) cur = i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i === cur); });
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
